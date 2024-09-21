@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace KPM.Data.EntityFramework;
 public class PasswordRepository
-    : AbstractRepository<Password, Guid>
+    : BaseRepository<Password, Guid>
 {
     public PasswordRepository(IUnitOfWork uow)
         : base(uow)

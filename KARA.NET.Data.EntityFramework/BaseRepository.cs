@@ -4,9 +4,9 @@ using System;
 using System.Linq;
 
 namespace KARA.NET.Data.EntityFramework;
-public abstract class AbstractRepository<Entity, Key>
-    : IRepository<Entity, Key>
-    where Entity : AbstractEntity<Key>
+public abstract class BaseRepository<TEntity, TKey>
+    : IRepository<TEntity, TKey>
+    where TEntity : BaseEntity<TKey>
 {
     protected UnitOfWork UnitOfWork { get; }
 
@@ -15,17 +15,17 @@ public abstract class AbstractRepository<Entity, Key>
         get => this.UnitOfWork.DbContext;
     }
 
-    protected DbSet<Entity> DbSet
+    protected DbSet<TEntity> DbSet
     {
-        get => this.DbContext.Set<Entity>();
+        get => this.DbContext.Set<TEntity>();
     }
 
-    protected IQueryable<Entity> Query
+    protected IQueryable<TEntity> Query
     {
         get => this.DbSet.AsQueryable();
     }
 
-    protected AbstractRepository(IUnitOfWork unitOfWork)
+    protected BaseRepository(IUnitOfWork unitOfWork)
     {
         if (unitOfWork is UnitOfWork unitOfWorkEF)
         {

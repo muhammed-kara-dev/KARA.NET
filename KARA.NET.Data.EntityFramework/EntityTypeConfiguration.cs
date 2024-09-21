@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace KARA.NET.Data.EntityFramework;
-public abstract class EntityTypeConfiguration<Entity>
-    where Entity : class
+public abstract class EntityTypeConfiguration<TEntity>
+    where TEntity : class
 {
-    public abstract void Map(EntityTypeBuilder<Entity> entity);
+    public abstract void Map(EntityTypeBuilder<TEntity> entity);
 }

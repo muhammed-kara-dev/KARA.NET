@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KARA.NET.Business\KARA.NET.Business.csproj" />
     <ProjectReference Include="..\KPM.Entities\KPM.Entities.csproj" />
     <ProjectReference Include="..\KPM.Models\KPM.Models.csproj" />
   </ItemGroup>
