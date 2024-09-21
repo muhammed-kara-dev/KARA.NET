@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace KARA.NET.Data;
+﻿namespace KARA.NET.Data;
 public interface IUnitOfWork
     : IDisposable
 {

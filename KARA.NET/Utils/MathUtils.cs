@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace KARA.NET;
+﻿namespace KARA.NET;
 public static class MathUtils
 {
     public static int Clamp(this int value, int min, int max)

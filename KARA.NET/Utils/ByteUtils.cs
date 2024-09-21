@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-
-namespace KARA.NET;
+﻿namespace KARA.NET;
 public static class ByteUtils
 {
     private static string[] Sizes { get; } = ["B", "KB", "MB", "GB", "TB"];

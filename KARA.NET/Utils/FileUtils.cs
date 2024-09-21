@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace KARA.NET;
+﻿namespace KARA.NET;
 public static class FileUtils
 {
     public static bool IsLocked(string path)

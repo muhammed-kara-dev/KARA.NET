@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace KARA.NET;
+﻿namespace KARA.NET;
 public static class StringUtils
 {
     public static string GenerateCode(int length)

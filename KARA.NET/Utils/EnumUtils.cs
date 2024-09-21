@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace KARA.NET;
+﻿namespace KARA.NET;
 public static class EnumUtils
 {
     public static T ChangeEnum<T>(T value, int indexIncrease = 1)

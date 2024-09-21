@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace KARA.NET;
+﻿namespace KARA.NET;
 public static class DateTimeUtils
 {
     public static bool CompareDateAndHours(DateTime dt1, DateTime dt2)

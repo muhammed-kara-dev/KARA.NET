@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace KPM.Models;
+﻿namespace KPM.Models;
 public class PasswordModel
 {
     public Guid ID { get; set; }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace KARA.NET;
+﻿namespace KARA.NET;
 public static class TimeSpanUtils
 {
     public static string Format(this TimeSpan param, bool includeDays = false, bool includeHours = true, bool includeMinutes = true, bool includeSeconds = true, bool includeMilliseconds = false)

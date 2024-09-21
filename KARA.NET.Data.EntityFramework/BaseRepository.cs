@@ -1,7 +1,5 @@
 ﻿using KARA.NET.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Linq;
 
 namespace KARA.NET.Data.EntityFramework;
 public abstract class BaseRepository<TEntity, TKey>

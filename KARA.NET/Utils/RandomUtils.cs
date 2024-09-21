@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace KARA.NET;
+﻿namespace KARA.NET;
 public static class RandomUtils
 {
     private static Random Random { get; } = new Random(Guid.NewGuid().GetHashCode());

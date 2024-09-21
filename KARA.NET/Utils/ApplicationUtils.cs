@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace KARA.NET;
+﻿namespace KARA.NET;
 public static class ApplicationUtils
 {
     public static bool IsDebug

@@ -1,9 +1,6 @@
 ﻿using KARA.NET.Data;
 using KARA.NET.Data.EntityFramework;
 using KPM.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace KPM.Data.EntityFramework;
 public class PasswordRepository
