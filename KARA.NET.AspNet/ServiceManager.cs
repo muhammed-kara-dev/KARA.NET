@@ -17,6 +17,10 @@ public static class ServiceManager
         {
             services.AddSingleton(typeof(IUnitOfWorkFactory), type);
         }
+        foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IRepositoryFactory>(assemblies))
+        {
+            services.AddSingleton(typeof(IRepositoryFactory), type);
+        }
         foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IService>(assemblies))
         {
             services.AddScoped(type);
