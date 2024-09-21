@@ -6,6 +6,11 @@ namespace KPM.Data.EntityFramework;
 public class DataModel
     : BaseDataModel
 {
+    public DataModel(DatabaseSettings databaseSettings)
+        : base(databaseSettings)
+    {
+    }
+
     protected override void Configure(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseLazyLoadingProxies();

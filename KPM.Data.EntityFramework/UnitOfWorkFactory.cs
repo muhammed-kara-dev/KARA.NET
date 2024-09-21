@@ -1,25 +1,32 @@
 ﻿using KARA.NET.Data.EntityFramework;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace KPM.Data.EntityFramework;
 public class UnitOfWorkFactory
     : BaseUnitOfWorkFactory
 {
     private bool Initialized { get; set; }
+    private List<DatabaseSettings> DatabaseSettings { get; set; }
 
-    // TODO connectionName
-    protected override DbContext CreateDbContext(string connectionName)
+    public UnitOfWorkFactory(IOptions<List<DatabaseSettings>> databaseSettings)
     {
-        // TODO seed
-        var seed = false;
+        this.DatabaseSettings = databaseSettings.Value;
+    }
 
-        var dataModel = new DataModel();
+    protected override DbContext CreateDbContext(string database)
+    {
+        var databaseSettings = this.DatabaseSettings
+            .Where(x => x.Name == database)
+            .DefaultIfEmpty(this.DatabaseSettings.First())
+            .First();
+        var dataModel = new DataModel(databaseSettings);
 
         if (!this.Initialized)
         {
             this.Initialized = true;
 
-            if (seed)
+            if (databaseSettings.Seed)
             {
                 dataModel.Database.EnsureDeleted();
                 dataModel.EnableSeeding();

@@ -4,14 +4,19 @@ namespace KARA.NET.Data.EntityFramework;
 public abstract class BaseDataModel
     : DbContext
 {
+    private DatabaseSettings DatabaseSettings { get; }
     private bool IsSeeding { get; set; }
+
+    public BaseDataModel(DatabaseSettings databaseSettings)
+    {
+        this.DatabaseSettings = databaseSettings;
+    }
 
     protected abstract void Configure(DbContextOptionsBuilder optionsBuilder);
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        // TODO connectionstring
-        optionsBuilder.UseSqlServer("Server=localhost\\sqlexpress;Database=KPM;Trusted_Connection=True;MultipleActiveResultSets=True;Integrated Security=True;TrustServerCertificate=True;");
+        optionsBuilder.UseSqlServer(this.DatabaseSettings.ConnectionString);
         this.Configure(optionsBuilder);
     }
 
