@@ -2,8 +2,8 @@
 using KPM.Entities;
 using System;
 
-namespace KPM.Business;
+namespace KPM.Data.EntityFramework;
 public class PasswordRepository
-    : IRepository<Password, Guid>
+    : AbstractRepository<Password, Guid>
 {
 }
