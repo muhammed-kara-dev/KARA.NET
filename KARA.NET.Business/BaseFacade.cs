@@ -1,4 +1,5 @@
-﻿using KARA.NET.Data;
+﻿using AutoMapper;
+using KARA.NET.Data;
 
 namespace KARA.NET.Business;
 public abstract class BaseFacade

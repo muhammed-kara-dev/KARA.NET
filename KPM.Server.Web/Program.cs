@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile($"appsettings.{Environment.MachineName}.json", optional: true, reloadOnChange: true);
 builder.Services.Configure<List<DatabaseSettings>>(builder.Configuration.GetSection(nameof(DatabaseSettings)));
 builder.Services.AddRazorComponents();
-builder.Services.AddScoped<PasswordFacade>();
+builder.Services.AddScoped<PasswordFacade>(); // TODO facade
 ServiceManager.Register(builder.Services);
 
 var app = builder.Build();

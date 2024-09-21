@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KARA.NET.Data\KARA.NET.Data.csproj" />
     <ProjectReference Include="..\KARA.NET\KARA.NET.csproj" />
+    <ProjectReference Include="..\KARA.NET.Data\KARA.NET.Data.csproj" />
   </ItemGroup>
 
 </Project>

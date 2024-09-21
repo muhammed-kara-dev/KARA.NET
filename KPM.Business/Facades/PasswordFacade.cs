@@ -1,4 +1,4 @@
-﻿using KARA.NET;
+﻿using AutoMapper;
 using KARA.NET.Business;
 using KARA.NET.Data;
 using KPM.Models;
