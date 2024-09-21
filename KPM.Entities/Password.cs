@@ -1,4 +1,4 @@
-﻿using KARA.NET.Business;
+﻿using KARA.NET.Entities;
 using System;
 
 namespace KPM.Entities;

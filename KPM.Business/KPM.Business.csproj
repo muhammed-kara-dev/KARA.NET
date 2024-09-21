@@ -4,4 +4,9 @@
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\KARA.NET.Data\KARA.NET.Data.csproj" />
+    <ProjectReference Include="..\KPM.Entities\KPM.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
