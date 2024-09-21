@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 namespace KARA.NET.Data.EntityFramework;
-public abstract class UnitOfWorkFactory
+public abstract class BaseUnitOfWorkFactory
     : IUnitOfWorkFactory
 {
     protected abstract DbContext CreateDbContext(string connectionName);
@@ -9,6 +9,6 @@ public abstract class UnitOfWorkFactory
     public IUnitOfWork Create(string connectionName = null)
     {
         var dbContext = this.CreateDbContext(connectionName);
-        return new UnitOfWork(dbContext);
+        return new BaseUnitOfWork(dbContext);
     }
 }

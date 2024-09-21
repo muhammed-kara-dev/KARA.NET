@@ -6,6 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\KARA.NET\KARA.NET.csproj" />
+    <ProjectReference Include="..\KARA.NET.Business\KARA.NET.Business.csproj" />
+    <ProjectReference Include="..\KPM.Data.EntityFramework\KPM.Data.EntityFramework.csproj" />
     <ProjectReference Include="..\KPM.Entities\KPM.Entities.csproj" />
     <ProjectReference Include="..\KPM.Models\KPM.Models.csproj" />
   </ItemGroup>

@@ -15,8 +15,8 @@ public static class AssemblyUtils
 
     public static IEnumerable<Assembly> FromProjectPath(string fileNameStartsWith)
     {
-        return AssemblyUtils.All
-            .Where(x => Path.GetFileNameWithoutExtension(x.Location).StartsWith(fileNameStartsWith))
-            .Where(x => Path.GetExtension(x.Location) == ".dll");
+        return Directory.GetFiles(ApplicationUtils.Location, "*.dll", SearchOption.TopDirectoryOnly)
+            .Where(x => Path.GetFileNameWithoutExtension(x).StartsWith(fileNameStartsWith))
+            .Select(Assembly.LoadFile);
     }
 }

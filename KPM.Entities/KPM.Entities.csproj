@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\KARA.NET\KARA.NET.csproj" />
     <ProjectReference Include="..\KARA.NET.Entities\KARA.NET.Entities.csproj" />
   </ItemGroup>
 

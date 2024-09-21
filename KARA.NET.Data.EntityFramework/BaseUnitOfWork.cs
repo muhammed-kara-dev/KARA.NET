@@ -2,14 +2,14 @@
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace KARA.NET.Data.EntityFramework;
-public class UnitOfWork
+public class BaseUnitOfWork
     : IUnitOfWork
 {
     internal DbContext DbContext { get; }
     private IDbContextTransaction Transaction { get; }
     public bool IsComplete { get; private set; }
 
-    public UnitOfWork(DbContext dbContext)
+    public BaseUnitOfWork(DbContext dbContext)
     {
         this.DbContext = dbContext;
         this.Transaction = dbContext.Database.BeginTransaction();

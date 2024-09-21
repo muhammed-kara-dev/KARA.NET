@@ -1,0 +1,15 @@
+﻿using KPM.Business;
+using KPM.Models;
+using Microsoft.AspNetCore.Components;
+
+namespace KPM.Server.Web.Pages;
+public partial class Password
+{
+    private List<PasswordModel> Passwords { get; set; }
+    [Inject] public PasswordFacade Facade { get; set; }
+
+    protected override void OnInitialized()
+    {
+        this.Passwords = this.Facade.GetAll();
+    }
+}
