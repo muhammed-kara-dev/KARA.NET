@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KARA.NET.Business\KARA.NET.Business.csproj" />
+    <ProjectReference Include="..\KARA.NET.EntityFramework\KARA.NET.EntityFramework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Facades\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+</Project>
