@@ -15,8 +15,11 @@ public abstract class BaseDataModel
         this.Configure(optionsBuilder);
     }
 
+    protected abstract void CreateModel(ModelBuilder modelBuilder);
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        this.CreateModel(modelBuilder);
         if (this.IsSeeding)
         {
             // TODO seed

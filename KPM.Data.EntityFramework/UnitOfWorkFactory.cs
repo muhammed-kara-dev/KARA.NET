@@ -11,7 +11,7 @@ public class UnitOfWorkFactory
     protected override DbContext CreateDbContext(string connectionName)
     {
         // TODO seed
-        var seed = true;
+        var seed = false;
 
         var dataModel = new DataModel();
 

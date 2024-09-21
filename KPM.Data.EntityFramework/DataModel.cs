@@ -1,4 +1,5 @@
 ﻿using KARA.NET.Data.EntityFramework;
+using KPM.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace KPM.Data.EntityFramework;
@@ -14,5 +15,10 @@ public class DataModel
         // TODO logger
         //optionsBuilder.UseLoggerFactory(_loggerFactory);
 #endif
+    }
+
+    protected override void CreateModel(ModelBuilder modelBuilder)
+    {
+        new PasswordMap().Map(modelBuilder.Entity<Password>());
     }
 }

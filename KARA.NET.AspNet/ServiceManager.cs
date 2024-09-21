@@ -4,24 +4,18 @@ using Microsoft.Extensions.DependencyInjection;
 namespace KARA.NET.AspNet;
 public static class ServiceManager
 {
-    public static void Register(IServiceCollection services, params string[] libraryNameStartsWith)
+    public static void Register(IServiceCollection services)
     {
-        var assemblies = AssemblyUtils.All;
-        foreach (var libraryName in libraryNameStartsWith)
+        services.AddScoped<IMapper, Mapper>();
+        foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IUnitOfWorkFactory>(App.Assemblies))
         {
-            var libraries = AssemblyUtils.FromProjectPath(libraryName);
-            assemblies = assemblies.Concat(libraries).Distinct().ToArray();
+            services.AddScoped(typeof(IUnitOfWorkFactory), type);
         }
-        services.AddSingleton<IMapper, Mapper>();
-        foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IUnitOfWorkFactory>(assemblies))
+        foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IRepositoryFactory>(App.Assemblies))
         {
-            services.AddSingleton(typeof(IUnitOfWorkFactory), type);
+            services.AddScoped(typeof(IRepositoryFactory), type);
         }
-        foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IRepositoryFactory>(assemblies))
-        {
-            services.AddSingleton(typeof(IRepositoryFactory), type);
-        }
-        foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IService>(assemblies))
+        foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IService>(App.Assemblies))
         {
             services.AddScoped(type);
         }

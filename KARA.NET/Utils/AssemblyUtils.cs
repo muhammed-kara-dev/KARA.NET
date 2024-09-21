@@ -12,11 +12,4 @@ public static class AssemblyUtils
     {
         get => AppDomain.CurrentDomain.GetAssemblies();
     }
-
-    public static IEnumerable<Assembly> FromProjectPath(string fileNameStartsWith)
-    {
-        return Directory.GetFiles(ApplicationUtils.Location, "*.dll", SearchOption.TopDirectoryOnly)
-            .Where(x => Path.GetFileNameWithoutExtension(x).StartsWith(fileNameStartsWith))
-            .Select(Assembly.LoadFile);
-    }
 }
