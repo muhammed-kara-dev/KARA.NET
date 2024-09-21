@@ -6,7 +6,7 @@ namespace KARA.NET.Data.EntityFramework;
 public class UnitOfWork
     : IUnitOfWork
 {
-    private DbContext DbContext { get; }
+    internal DbContext DbContext { get; }
     private IDbContextTransaction Transaction { get; }
     public bool IsComplete { get; private set; }
 
