@@ -18,7 +18,7 @@ public static class App
             {
                 if (!assemblies.Select(x => x.Location).Contains(assemblyLocation))
                 {
-                    var assembly = Assembly.LoadFile(assemblyLocation);
+                    var assembly = AssemblyUtils.LoadFromFile(assemblyLocation);
                     assemblies.Add(assembly);
                     assembliesNew.Add(assembly);
                 }
