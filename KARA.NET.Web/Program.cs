@@ -1,9 +1,10 @@
+using KARA.NET;
 using KARA.NET.AspNet;
 using KARA.NET.Data.EntityFramework;
 using KARA.NET.RadzenBlazor;
 using KARA.NET.Web;
 
-var assemblies = KARA.NET.App.AddAssemblies("KARA.NET", "KPM");
+var assemblies = App.AddAssemblies("KARA.NET", "KPM");
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile($"appsettings.{Environment.MachineName}.json", optional: true, reloadOnChange: true);
