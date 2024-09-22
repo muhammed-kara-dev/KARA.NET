@@ -1,5 +1,5 @@
 using KARA.NET;
-using KARA.NET.AspNet;
+using KARA.NET.Blazor;
 using KARA.NET.Blazor.Bootstrap;
 using KARA.NET.Blazor.Radzen2;
 using KARA.NET.Data.EntityFramework;

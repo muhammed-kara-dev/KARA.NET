@@ -2,7 +2,7 @@
 using KARA.NET.Data;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KARA.NET.AspNet;
+namespace KARA.NET.Blazor;
 public static class ServiceManager
 {
     public static void Register(IServiceCollection services)
