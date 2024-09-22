@@ -1,33 +1,23 @@
 ﻿@inherits LayoutComponentBase
-<div class="page">
-    <div class="sidebar">
-        <div class="top-row ps-3 navbar navbar-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="">KPM</a>
-            </div>
-        </div>
-        <input type="checkbox" title="Navigation menu" class="navbar-toggler" />
-        <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-            <nav class="flex-column">
-                <div class="nav-item px-3">
-                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                        <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-                    </NavLink>
-                </div>
-            </nav>
-        </div>
-    </div>
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
-        <article class="content px-4">
+<RadzenStack Orientation="Orientation.Vertical">
+    <RadzenStack Orientation="Orientation.Horizontal">
+        <RadzenStack Orientation="Orientation.Horizontal">
+        </RadzenStack>
+        <RadzenStack Orientation="Orientation.Horizontal">
+        </RadzenStack>
+    </RadzenStack>
+    <RadzenStack Orientation="Orientation.Horizontal">
+        <RadzenStack Orientation="Orientation.Vertical">
+            <RadzenLink Path="/" Text="Home" />
+            <RadzenLink Path="/password" Text="Password" />
+        </RadzenStack>
+        <RadzenStack Orientation="Orientation.Vertical">
             @this.Body
-        </article>
-    </main>
-</div>
-<div id="blazor-error-ui">
-    <span>An unhandled error has occurred.</span>
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
-</div>
+        </RadzenStack>
+    </RadzenStack>
+    <div id="blazor-error-ui">
+        <RadzenLabel Text="An unhandled error has occurred." />
+        <RadzenLink Path="" Text="Reload" />
+        <RadzenLink Text="X" />
+    </div>
+</RadzenStack>

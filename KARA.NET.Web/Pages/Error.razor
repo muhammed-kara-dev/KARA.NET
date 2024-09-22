@@ -2,14 +2,19 @@
 @using System.Diagnostics
 @code
 {
-    [CascadingParameter]
-    private HttpContext? HttpContext { get; set; }
+    [CascadingParameter] private HttpContext HttpContext { get; set; }
 
-    private string? RequestId { get; set; }
-    private bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+    private string RequestId { get; set; }
 
-    protected override void OnInitialized() =>
-        RequestId = Activity.Current?.Id ?? HttpContext?.TraceIdentifier;
+    private bool ShowRequestId
+    {
+        get => !string.IsNullOrEmpty(this.RequestId);
+    }
+
+    protected override void OnInitialized()
+    {
+        this.RequestId = Activity.Current?.Id ?? this.HttpContext?.TraceIdentifier;
+    }
 }
 <PageTitle>Error</PageTitle>
 <h1 class="text-danger">Error.</h1>

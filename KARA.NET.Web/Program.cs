@@ -9,7 +9,8 @@ var assemblies = App.AddAssemblies("KARA.NET", "KPM");
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile($"appsettings.{Environment.MachineName}.json", optional: true, reloadOnChange: true);
 builder.Services.Configure<List<DatabaseSettings>>(builder.Configuration.GetSection(nameof(DatabaseSettings)));
-builder.Services.AddRazorComponents().AddInteractiveServerComponents();
+builder.Services.AddRazorComponents()
+    .AddInteractiveServerComponents();
 builder.Services.AddLogging(x => x.AddConsole());
 ServiceManager.Register(builder.Services);
 RadzenManager.Register(builder.Services);
@@ -23,5 +24,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAntiforgery();
-app.MapRazorComponents<_App>().AddInteractiveServerRenderMode().AddAdditionalAssemblies(assemblies);
+app.MapRazorComponents<_App>()
+    .AddInteractiveServerRenderMode()
+    .AddAdditionalAssemblies(assemblies);
 app.Run();
