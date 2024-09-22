@@ -8,6 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="..\KARA.NET\KARA.NET.csproj" />
     <ProjectReference Include="..\KARA.NET.AspNet\KARA.NET.AspNet.csproj" />
+    <ProjectReference Include="..\KARA.NET.Radzen\KARA.NET.Radzen.csproj" />
     <ProjectReference Include="..\KPM.Business\KPM.Business.csproj" />
   </ItemGroup>
 
