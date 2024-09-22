@@ -2,7 +2,9 @@ using KARA.NET.AspNet;
 using KARA.NET.Data.EntityFramework;
 using KPM.Server.Web.Components;
 
+// TODO logger
 // TODO radzen
+// TODO service
 var assemblies = KARA.NET.App.AddAssemblies("KARA.NET", "KPM");
 
 var builder = WebApplication.CreateBuilder(args);
