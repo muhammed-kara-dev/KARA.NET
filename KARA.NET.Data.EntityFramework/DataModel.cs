@@ -30,7 +30,7 @@ public class DataModel
     {
         foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IEntityTypeConfiguration>(App.Assemblies))
         {
-            Activator.CreateInstance(type, args: modelBuilder);
+            Activator.CreateInstance(type, modelBuilder);
         }
         if (this.DatabaseSettings.Seed)
         {

@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace KARA.NET.Data.EntityFramework;
-public abstract class BaseRepository<TEntity, TKey>
-    : IRepository<TEntity, TKey>
-    where TEntity : BaseEntity<TKey>
+public abstract class BaseRepository<TEntity>
+    : IRepository
+    where TEntity : class, IEntity, new()
 {
     protected UnitOfWork UnitOfWork { get; }
 
