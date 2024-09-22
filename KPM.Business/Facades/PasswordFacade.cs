@@ -2,6 +2,7 @@
 using KARA.NET.Business;
 using KARA.NET.Data;
 using KPM.Models;
+using Microsoft.Extensions.Logging;
 
 namespace KPM.Business;
 public class PasswordFacade
@@ -9,8 +10,8 @@ public class PasswordFacade
 {
     private PasswordService PasswordService { get; }
 
-    public PasswordFacade(IMapper mapper, IUnitOfWorkFactory unitOfWorkFactory, PasswordService passwordService)
-        : base(mapper, unitOfWorkFactory)
+    public PasswordFacade(ILoggerFactory loggerFactory, IMapper mapper, IUnitOfWorkFactory unitOfWorkFactory, PasswordService passwordService)
+        : base(loggerFactory, mapper, unitOfWorkFactory)
     {
         this.PasswordService = passwordService;
     }
@@ -27,6 +28,7 @@ public class PasswordFacade
     {
         using var uow = this.UnitOfWorkFactory.Create();
         var entities = this.PasswordService.GetAll(uow);
+        this.Logger.LogInformation($"entities: {string.Join(", ", entities.Select(x => $"{x.ID}={x.Name}"))}");
         var models = entities.Select(this.Mapper.Map<PasswordModel>).ToList();
         return models;
     }

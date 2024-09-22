@@ -1,14 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace KARA.NET.Data.EntityFramework;
 public abstract class BaseDataModel
     : DbContext
 {
+    protected ILoggerFactory LoggerFactory { get; }
     private DatabaseSettings DatabaseSettings { get; }
     private bool IsSeeding { get; set; }
 
-    public BaseDataModel(DatabaseSettings databaseSettings)
+    public BaseDataModel(ILoggerFactory loggerFactory, DatabaseSettings databaseSettings)
     {
+        this.LoggerFactory = loggerFactory;
         this.DatabaseSettings = databaseSettings;
     }
 

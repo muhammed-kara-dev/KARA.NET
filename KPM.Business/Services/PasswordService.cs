@@ -2,13 +2,14 @@
 using KARA.NET.Data;
 using KPM.Data.EntityFramework;
 using KPM.Entities;
+using Microsoft.Extensions.Logging;
 
 namespace KPM.Business;
 public class PasswordService
     : BaseService
 {
-    public PasswordService(IRepositoryFactory repositoryFactory)
-        : base(repositoryFactory)
+    public PasswordService(ILoggerFactory loggerFactory, IRepositoryFactory repositoryFactory)
+        : base(loggerFactory, repositoryFactory)
     {
     }
 

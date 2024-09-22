@@ -1,5 +1,6 @@
 ﻿using KARA.NET.Data.EntityFramework;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace KPM.Data.EntityFramework;
@@ -7,10 +8,12 @@ public class UnitOfWorkFactory
     : BaseUnitOfWorkFactory
 {
     private bool Initialized { get; set; }
-    private List<DatabaseSettings> DatabaseSettings { get; set; }
+    private ILoggerFactory LoggerFactory { get; }
+    private List<DatabaseSettings> DatabaseSettings { get; }
 
-    public UnitOfWorkFactory(IOptions<List<DatabaseSettings>> databaseSettings)
+    public UnitOfWorkFactory(ILoggerFactory loggerFactory, IOptions<List<DatabaseSettings>> databaseSettings)
     {
+        this.LoggerFactory = loggerFactory;
         this.DatabaseSettings = databaseSettings.Value;
     }
 
@@ -20,7 +23,7 @@ public class UnitOfWorkFactory
             .Where(x => x.Name == database)
             .DefaultIfEmpty(this.DatabaseSettings.First())
             .First();
-        var dataModel = new DataModel(databaseSettings);
+        var dataModel = new DataModel(this.LoggerFactory, databaseSettings);
 
         if (!this.Initialized)
         {
