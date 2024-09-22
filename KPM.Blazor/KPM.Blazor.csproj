@@ -7,12 +7,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KARA.NET\KARA.NET.csproj" />
-    <ProjectReference Include="..\KARA.NET.RadzenBlazor\KARA.NET.RadzenBlazor.csproj" />
+    <ProjectReference Include="..\KARA.NET.BlazorBootstrap\KARA.NET.BlazorBootstrap.csproj" />
+    <ProjectReference Include="..\KARA.NET.BlazorRadzen\KARA.NET.BlazorRadzen.csproj" />
     <ProjectReference Include="..\KPM.Business\KPM.Business.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.8" />
   </ItemGroup>
 
 </Project>

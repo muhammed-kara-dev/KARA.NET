@@ -1,7 +1,8 @@
 using KARA.NET;
 using KARA.NET.AspNet;
+using KARA.NET.BlazorBootstrap;
+using KARA.NET.BlazorRadzen;
 using KARA.NET.Data.EntityFramework;
-using KARA.NET.RadzenBlazor;
 using KARA.NET.Web;
 
 var assemblies = App.AddAssemblies("KARA.NET", "KPM");
@@ -13,6 +14,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddLogging(x => x.AddConsole());
 ServiceManager.Register(builder.Services);
+BlazorManager.Register(builder.Services);
 RadzenManager.Register(builder.Services);
 
 var app = builder.Build();
