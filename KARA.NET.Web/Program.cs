@@ -3,7 +3,6 @@ using KARA.NET.Data.EntityFramework;
 using KARA.NET.Web;
 using KARA.NET.Web.Pages;
 
-// TODO navmenu
 // TODO translator
 // TODO authorization
 var assemblies = App.AddAssemblies("KARA.NET", nameof(PasswordManager));
