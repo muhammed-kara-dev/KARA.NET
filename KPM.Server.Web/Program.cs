@@ -4,6 +4,7 @@ using KARA.NET.Radzen;
 using KPM.Server.Web.Components;
 
 // TODO logger
+// TODO authorization
 var assemblies = KARA.NET.App.AddAssemblies("KARA.NET", "KPM");
 
 var builder = WebApplication.CreateBuilder(args);
