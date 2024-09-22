@@ -1,4 +1,4 @@
-﻿namespace KPM.Models;
+﻿namespace PasswordManager.Models;
 public class PasswordModel
 {
     public Guid ID { get; set; }

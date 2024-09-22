@@ -1,8 +1,8 @@
-﻿using KPM.Business;
-using KPM.Models;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
+using PasswordManager.Business;
+using PasswordManager.Models;
 
-namespace KPM.Blazor.Pages;
+namespace PasswordManager.Blazor.Pages;
 public partial class Password
 {
     private List<PasswordModel> Passwords { get; set; } = new();
