@@ -1,10 +1,12 @@
 using KARA.NET;
 using KARA.NET.AspNet;
-using KARA.NET.BlazorBootstrap;
-using KARA.NET.BlazorRadzen;
+using KARA.NET.Blazor.Bootstrap;
+using KARA.NET.Blazor.Radzen2;
 using KARA.NET.Data.EntityFramework;
 using KARA.NET.Web;
 
+// TODO authorization
+// TODO translator
 var assemblies = App.AddAssemblies("KARA.NET", "KPM");
 
 var builder = WebApplication.CreateBuilder(args);

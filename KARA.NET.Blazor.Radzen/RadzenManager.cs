@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Radzen;
 
-namespace KARA.NET.BlazorRadzen;
+namespace KARA.NET.Blazor.Radzen2;
 public static class RadzenManager
 {
     public static void Register(IServiceCollection services)

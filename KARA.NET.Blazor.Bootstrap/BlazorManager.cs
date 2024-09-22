@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace KARA.NET.BlazorBootstrap;
+namespace KARA.NET.Blazor.Bootstrap;
 public static class BlazorManager
 {
     public static void Register(IServiceCollection services)

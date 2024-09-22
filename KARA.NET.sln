@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KARA.NET.Business", "KARA.N
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KARA.NET.AspNet", "KARA.NET.AspNet\KARA.NET.AspNet.csproj", "{5CB43DCE-FC14-4DAA-B62B-13A1A1ED237A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KARA.NET.BlazorRadzen", "KARA.NET.BlazorRadzen\KARA.NET.BlazorRadzen.csproj", "{F024E4A1-A903-4855-AA25-ADE961C105A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KARA.NET.Blazor.Radzen2", "KARA.NET.Blazor.Radzen\KARA.NET.Blazor.Radzen2.csproj", "{F024E4A1-A903-4855-AA25-ADE961C105A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presenter", "Presenter", "{ACD63491-572E-460D-BCD1-F4CA014EB0E6}"
 EndProject
@@ -35,7 +35,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{09C8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KPM.Blazor", "KPM.Blazor\KPM.Blazor.csproj", "{A2F9347B-14F2-4216-9C8A-896F20D6DC24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KARA.NET.BlazorBootstrap", "KARA.NET.BlazorBootstrap\KARA.NET.BlazorBootstrap.csproj", "{BBC7E666-0783-44D1-858D-FB07962C9034}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KARA.NET.Blazor.Bootstrap", "KARA.NET.Blazor.Bootstrap\KARA.NET.Blazor.Bootstrap.csproj", "{BBC7E666-0783-44D1-858D-FB07962C9034}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
