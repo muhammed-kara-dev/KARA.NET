@@ -2,9 +2,10 @@
 using Radzen;
 
 namespace KARA.NET.Blazor.Radzen2;
-public static class RadzenManager
+public class RadzenManager
+    : IServiceManager
 {
-    public static void Register(IServiceCollection services)
+    public void Register(IServiceCollection services)
     {
         services.AddRadzenComponents();
         services.AddScoped<ContextMenuService>();

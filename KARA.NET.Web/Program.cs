@@ -1,13 +1,11 @@
 using KARA.NET;
-using KARA.NET.Blazor;
-using KARA.NET.Blazor.Bootstrap;
-using KARA.NET.Blazor.Radzen2;
 using KARA.NET.Data.EntityFramework;
 using KARA.NET.Web;
+using KARA.NET.Web.Pages;
 
 // TODO authorization
 // TODO translator
-var assemblies = App.AddAssemblies("KARA.NET", "KPM");
+var assemblies = App.AddAssemblies("KARA.NET", nameof(KPM));
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile($"appsettings.{Environment.MachineName}.json", optional: true, reloadOnChange: true);
@@ -15,14 +13,15 @@ builder.Services.Configure<List<DatabaseSettings>>(builder.Configuration.GetSect
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddLogging(x => x.AddConsole());
-ServiceManager.Register(builder.Services);
-BlazorManager.Register(builder.Services);
-RadzenManager.Register(builder.Services);
+foreach (var serviceManager in ReflectionUtils.CreateInstancesOfInterface<IServiceManager>(App.Assemblies))
+{
+    serviceManager.Register(builder.Services);
+}
 
 var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error", createScopeForErrors: true);
+    app.UseExceptionHandler($"/{nameof(Error)}", createScopeForErrors: true);
     app.UseHsts();
 }
 app.UseHttpsRedirection();

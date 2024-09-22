@@ -3,9 +3,10 @@ using KARA.NET.Data;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KARA.NET.Blazor;
-public static class ServiceManager
+public class ServiceManager
+    : IServiceManager
 {
-    public static void Register(IServiceCollection services)
+    public void Register(IServiceCollection services)
     {
         foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<Profile>(App.Assemblies))
         {
