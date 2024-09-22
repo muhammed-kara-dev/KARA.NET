@@ -3,9 +3,9 @@ using KARA.NET.Data.EntityFramework;
 using KARA.NET.Web;
 using KARA.NET.Web.Pages;
 
-// TODO authorization
-// TODO translator
 // TODO KPM > PasswordManager
+// TODO translator
+// TODO authorization
 var assemblies = App.AddAssemblies("KARA.NET", nameof(KPM));
 
 var builder = WebApplication.CreateBuilder(args);
