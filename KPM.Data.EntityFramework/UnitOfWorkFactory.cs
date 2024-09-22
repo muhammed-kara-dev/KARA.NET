@@ -23,7 +23,7 @@ public class UnitOfWorkFactory
             .Where(x => x.Name == database)
             .DefaultIfEmpty(this.DatabaseSettings.First())
             .First();
-        var dataModel = new DataModel(this.LoggerFactory, databaseSettings);
+        var dataModel = new DataModel(this.LoggerFactory, databaseSettings, new SeedBase(), new SeedDevelopment(), new SeedProduction());
 
         if (!this.Initialized)
         {

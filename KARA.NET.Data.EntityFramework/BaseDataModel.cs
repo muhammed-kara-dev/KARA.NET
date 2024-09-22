@@ -7,12 +7,18 @@ public abstract class BaseDataModel
 {
     protected ILoggerFactory LoggerFactory { get; }
     private DatabaseSettings DatabaseSettings { get; }
+    private ISeed SeedBase { get; }
+    private ISeed SeedDevelopment { get; }
+    private ISeed SeedProduction { get; }
     private bool IsSeeding { get; set; }
 
-    public BaseDataModel(ILoggerFactory loggerFactory, DatabaseSettings databaseSettings)
+    public BaseDataModel(ILoggerFactory loggerFactory, DatabaseSettings databaseSettings, ISeed seedBase = null, ISeed seedDevelopment = null, ISeed seedProduction = null)
     {
         this.LoggerFactory = loggerFactory;
         this.DatabaseSettings = databaseSettings;
+        this.SeedBase = seedBase;
+        this.SeedDevelopment = seedDevelopment;
+        this.SeedProduction = seedProduction;
     }
 
     protected abstract void Configure(DbContextOptionsBuilder optionsBuilder);
@@ -30,7 +36,15 @@ public abstract class BaseDataModel
         this.CreateModel(modelBuilder);
         if (this.IsSeeding)
         {
-            // TODO seed
+            this.SeedBase?.Seed(modelBuilder);
+            if (ApplicationUtils.IsDebug)
+            {
+                this.SeedDevelopment?.Seed(modelBuilder);
+            }
+            else
+            {
+                this.SeedProduction?.Seed(modelBuilder);
+            }
         }
         base.OnModelCreating(modelBuilder);
     }

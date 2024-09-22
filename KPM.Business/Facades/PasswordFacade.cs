@@ -28,7 +28,6 @@ public class PasswordFacade
     {
         using var uow = this.UnitOfWorkFactory.Create();
         var entities = this.PasswordService.GetAll(uow);
-        this.Logger.LogInformation($"entities: {string.Join(", ", entities.Select(x => $"{x.ID}={x.Name}"))}");
         var models = entities.Select(this.Mapper.Map<PasswordModel>).ToList();
         return models;
     }

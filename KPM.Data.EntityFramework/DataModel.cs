@@ -7,8 +7,8 @@ namespace KPM.Data.EntityFramework;
 public class DataModel
     : BaseDataModel
 {
-    public DataModel(ILoggerFactory loggerFactory, DatabaseSettings databaseSettings)
-        : base(loggerFactory, databaseSettings)
+    public DataModel(ILoggerFactory loggerFactory, DatabaseSettings databaseSettings, ISeed seedBase = null, ISeed seedDevelopment = null, ISeed seedProduction = null)
+        : base(loggerFactory, databaseSettings, seedBase, seedDevelopment, seedProduction)
     {
     }
 
