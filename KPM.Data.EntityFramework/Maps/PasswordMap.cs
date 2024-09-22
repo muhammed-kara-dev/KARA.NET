@@ -1,17 +1,18 @@
 ﻿using KARA.NET.Data.EntityFramework;
 using KPM.Entities;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore;
 
 namespace KPM.Data.EntityFramework;
 public class PasswordMap
     : EntityTypeConfiguration<Password>
 {
-    public override void Map(EntityTypeBuilder<Password> entity)
+    public PasswordMap(ModelBuilder modelBuilder)
+        : base(modelBuilder)
     {
-        entity.HasKey(x => x.ID);
-        entity.Property(x => x.Name)
+        this.Entity.HasKey(x => x.ID);
+        this.Entity.Property(x => x.Name)
             .HasMaxLength(20)
             .IsRequired();
-        entity.Property(x => x.Value);
+        this.Entity.Property(x => x.Value);
     }
 }

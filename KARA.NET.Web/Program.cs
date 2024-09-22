@@ -1,0 +1,34 @@
+using KARA.NET;
+using KARA.NET.Data.EntityFramework;
+using KARA.NET.Web;
+using KARA.NET.Web.Pages;
+
+// TODO KPM > PasswordManager
+// TODO translator
+// TODO authorization
+var assemblies = App.AddAssemblies("KARA.NET", nameof(KPM));
+
+var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddJsonFile($"appsettings.{Environment.MachineName}.json", optional: true, reloadOnChange: true);
+builder.Services.Configure<List<DatabaseSettings>>(builder.Configuration.GetSection(nameof(DatabaseSettings)));
+builder.Services.AddRazorComponents()
+    .AddInteractiveServerComponents();
+builder.Services.AddLogging(x => x.AddConsole());
+foreach (var serviceManager in ReflectionUtils.CreateInstancesOfInterface<IServiceManager>(App.Assemblies))
+{
+    serviceManager.Register(builder.Services);
+}
+
+var app = builder.Build();
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler($"/{nameof(Error)}", createScopeForErrors: true);
+    app.UseHsts();
+}
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseAntiforgery();
+app.MapRazorComponents<_App>()
+    .AddInteractiveServerRenderMode()
+    .AddAdditionalAssemblies(assemblies);
+app.Run();

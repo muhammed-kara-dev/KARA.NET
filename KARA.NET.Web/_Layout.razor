@@ -1,0 +1,23 @@
+﻿@inherits LayoutComponentBase
+<RadzenStack Orientation="Orientation.Vertical">
+    <RadzenStack Orientation="Orientation.Horizontal">
+        <RadzenStack Orientation="Orientation.Horizontal">
+        </RadzenStack>
+        <RadzenStack Orientation="Orientation.Horizontal">
+        </RadzenStack>
+    </RadzenStack>
+    <RadzenStack Orientation="Orientation.Horizontal">
+        <RadzenStack Orientation="Orientation.Vertical">
+            <RadzenLink Path="/" Text="Home" />
+            <RadzenLink Path="/password" Text="Password" />
+        </RadzenStack>
+        <RadzenStack Orientation="Orientation.Vertical">
+            @this.Body
+        </RadzenStack>
+    </RadzenStack>
+    <div id="blazor-error-ui" style="display: none;">
+        <RadzenLabel Text="An unhandled error has occurred." />
+        <RadzenLink Path="" Text="Reload" />
+        <RadzenLink Text="X" />
+    </div>
+</RadzenStack>

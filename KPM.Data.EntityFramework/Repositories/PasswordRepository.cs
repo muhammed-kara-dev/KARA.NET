@@ -4,7 +4,7 @@ using KPM.Entities;
 
 namespace KPM.Data.EntityFramework;
 public class PasswordRepository
-    : BaseRepository<Password, Guid>
+    : BaseRepository<Password>
 {
     public PasswordRepository(IUnitOfWork uow)
         : base(uow)

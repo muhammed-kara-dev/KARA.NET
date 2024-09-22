@@ -1,0 +1,9 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@using Radzen
+@using Radzen.Blazor
+@code
+{
+    [Parameter] public IComponentRenderMode RenderMode { get; set; }
+}
+<RadzenTheme Theme="material" @rendermode="this.RenderMode" />
+<script src="_content/Radzen.Blazor/Radzen.Blazor.js?v=@(typeof(Radzen.Colors).Assembly.GetName().Version)"></script>
