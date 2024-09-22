@@ -13,6 +13,7 @@ public class PasswordMap
         this.Entity.Property(x => x.Name)
             .HasMaxLength(20)
             .IsRequired();
-        this.Entity.Property(x => x.Value);
+        this.Entity.Property(x => x.Value)
+            .IsRequired();
     }
 }
