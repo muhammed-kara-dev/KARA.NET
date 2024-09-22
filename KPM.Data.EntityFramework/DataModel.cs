@@ -1,4 +1,5 @@
-﻿using KARA.NET.Data.EntityFramework;
+﻿using KARA.NET;
+using KARA.NET.Data.EntityFramework;
 using KPM.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -15,11 +16,12 @@ public class DataModel
     protected override void Configure(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseLazyLoadingProxies();
-#if DEBUG
-        optionsBuilder.EnableDetailedErrors(true);
-        optionsBuilder.EnableSensitiveDataLogging(true);
-        optionsBuilder.UseLoggerFactory(this.LoggerFactory);
-#endif
+        if (ApplicationUtils.IsDebug)
+        {
+            optionsBuilder.EnableDetailedErrors(true);
+            optionsBuilder.EnableSensitiveDataLogging(true);
+            optionsBuilder.UseLoggerFactory(this.LoggerFactory);
+        }
     }
 
     protected override void CreateModel(ModelBuilder modelBuilder)
