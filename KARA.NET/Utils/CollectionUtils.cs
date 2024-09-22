@@ -31,7 +31,7 @@ public static class CollectionUtils
         return result;
     }
 
-    public static int Count(IEnumerable collection)
+    public static int Count(this IEnumerable collection)
     {
         if (collection == null)
         {
@@ -51,7 +51,7 @@ public static class CollectionUtils
         return param.Any() == false;
     }
 
-    public static void ForEach<T>(IEnumerable<T> param, Action<int, T> callback)
+    public static void ForEach<T>(this IEnumerable<T> param, Action<int, T> callback)
     {
         var index = 0;
         foreach (var item in param)
@@ -60,7 +60,7 @@ public static class CollectionUtils
         }
     }
 
-    public static int GetCounter<T>(Dictionary<T, int> collection, T key)
+    public static int GetCounter<T>(this Dictionary<T, int> collection, T key)
     {
         if (collection.ContainsKey(key) == false)
         {
@@ -69,7 +69,7 @@ public static class CollectionUtils
         return ++collection[key];
     }
 
-    public static T Random<T>(IEnumerable<T> param)
+    public static T Random<T>(this IEnumerable<T> param)
     {
         if (param.Any())
         {
@@ -87,12 +87,12 @@ public static class CollectionUtils
         return Enumerable.Range(min, max - min + 1).ToList();
     }
 
-    public static IEnumerable<T> Replace<T>(IEnumerable<T> list, int index, T item)
+    public static IEnumerable<T> Replace<T>(this IEnumerable<T> list, int index, T item)
     {
         return list.Select((x, y) => y != index ? x : item);
     }
 
-    public static IEnumerable<T> Shuffle<T>(IEnumerable<T> param)
+    public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> param)
     {
         return CollectionUtils.Shuffle(param.ToList());
     }
@@ -108,7 +108,7 @@ public static class CollectionUtils
         return param;
     }
 
-    public static bool TryGetFirst<T>(IEnumerable<T> collection, out T item)
+    public static bool TryGetFirst<T>(this IEnumerable<T> collection, out T item)
     {
         if (collection.Any())
         {
