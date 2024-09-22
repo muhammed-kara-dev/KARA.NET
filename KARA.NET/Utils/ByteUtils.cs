@@ -10,7 +10,12 @@ public static class ByteUtils
             || bytes1 != null && bytes2 != null && bytes1.SequenceEqual(bytes2) == false;
     }
 
-    public static string SizeToString(long param)
+    public static string SizeToString(this int param)
+    {
+        return ByteUtils.SizeToString((long)param);
+    }
+
+    public static string SizeToString(this long param)
     {
         var i = default(byte);
         var length = (double)param;

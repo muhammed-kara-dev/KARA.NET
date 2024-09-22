@@ -62,7 +62,7 @@ public static class DateTimeUtils
         }
     }
 
-    public static DateTime ToDateTime(DateTime dateTime, DayOfWeekDE dayOfWeek)
+    public static DateTime ToDateTime(this DateTime dateTime, DayOfWeekDE dayOfWeek)
     {
         return dateTime.AddDays(-(int)dayOfWeek);
     }

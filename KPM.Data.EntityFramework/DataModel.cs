@@ -1,13 +1,14 @@
 ﻿using KARA.NET.Data.EntityFramework;
 using KPM.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace KPM.Data.EntityFramework;
 public class DataModel
     : BaseDataModel
 {
-    public DataModel(DatabaseSettings databaseSettings)
-        : base(databaseSettings)
+    public DataModel(ILoggerFactory loggerFactory, DatabaseSettings databaseSettings, ISeed seedBase = null, ISeed seedDevelopment = null, ISeed seedProduction = null)
+        : base(loggerFactory, databaseSettings, seedBase, seedDevelopment, seedProduction)
     {
     }
 
@@ -17,8 +18,7 @@ public class DataModel
 #if DEBUG
         optionsBuilder.EnableDetailedErrors(true);
         optionsBuilder.EnableSensitiveDataLogging(true);
-        // TODO logger
-        //optionsBuilder.UseLoggerFactory(_loggerFactory);
+        optionsBuilder.UseLoggerFactory(this.LoggerFactory);
 #endif
     }
 

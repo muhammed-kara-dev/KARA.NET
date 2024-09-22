@@ -7,16 +7,24 @@ public static class App
     public static string StorageName = ApplicationUtils.ProjectName;
     public static Assembly[] Assemblies { get; private set; } = AssemblyUtils.All;
 
-    public static void AddAssemblies(params string[] fileNamesStartsWith)
+    public static Assembly[] AddAssemblies(params string[] fileNamesStartsWith)
     {
         var assemblies = App.Assemblies.ToList();
+        var assembliesNew = new List<Assembly>();
         foreach (var fileNameStartsWith in fileNamesStartsWith)
         {
-            var assembliesNew = Directory.GetFiles(ApplicationUtils.Location, "*.dll", SearchOption.TopDirectoryOnly)
-                .Where(x => Path.GetFileNameWithoutExtension(x).StartsWith(fileNameStartsWith))
-                .Select(Assembly.LoadFile);
-            assemblies.AddRange(assembliesNew);
+            foreach (var assemblyLocation in Directory.GetFiles(ApplicationUtils.Location, "*.dll", SearchOption.TopDirectoryOnly)
+                .Where(x => Path.GetFileNameWithoutExtension(x).StartsWith(fileNameStartsWith)))
+            {
+                if (!assemblies.Select(x => x.Location).Contains(assemblyLocation))
+                {
+                    var assembly = AssemblyUtils.LoadFromFile(assemblyLocation);
+                    assemblies.Add(assembly);
+                    assembliesNew.Add(assembly);
+                }
+            }
         }
-        App.Assemblies = assemblies.Distinct().ToArray();
+        App.Assemblies = assemblies.ToArray();
+        return assembliesNew.ToArray();
     }
 }

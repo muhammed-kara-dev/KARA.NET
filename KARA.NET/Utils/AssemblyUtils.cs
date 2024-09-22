@@ -12,4 +12,10 @@ public static class AssemblyUtils
     {
         get => AppDomain.CurrentDomain.GetAssemblies();
     }
+
+    public static Assembly LoadFromFile(string path)
+    {
+        var assembly = Assembly.LoadFile(path);
+        return AppDomain.CurrentDomain.Load(assembly.FullName);
+    }
 }

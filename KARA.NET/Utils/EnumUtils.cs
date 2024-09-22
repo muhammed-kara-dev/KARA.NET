@@ -1,7 +1,7 @@
 ﻿namespace KARA.NET;
 public static class EnumUtils
 {
-    public static T ChangeEnum<T>(T value, int indexIncrease = 1)
+    public static T ChangeEnum<T>(this T value, int indexIncrease = 1)
         where T : Enum
     {
         var values = EnumUtils.GetValues<T>();
