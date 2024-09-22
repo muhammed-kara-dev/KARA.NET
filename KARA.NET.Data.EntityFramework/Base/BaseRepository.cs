@@ -6,7 +6,7 @@ public abstract class BaseRepository<TEntity, TKey>
     : IRepository<TEntity, TKey>
     where TEntity : BaseEntity<TKey>
 {
-    protected BaseUnitOfWork UnitOfWork { get; }
+    protected UnitOfWork UnitOfWork { get; }
 
     private DbContext DbContext
     {
@@ -25,7 +25,7 @@ public abstract class BaseRepository<TEntity, TKey>
 
     protected BaseRepository(IUnitOfWork unitOfWork)
     {
-        if (unitOfWork is BaseUnitOfWork unitOfWorkEF)
+        if (unitOfWork is UnitOfWork unitOfWorkEF)
         {
             this.UnitOfWork = unitOfWorkEF;
         }

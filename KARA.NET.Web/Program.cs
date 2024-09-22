@@ -5,6 +5,7 @@ using KARA.NET.Web.Pages;
 
 // TODO authorization
 // TODO translator
+// TODO KPM > PasswordManager
 var assemblies = App.AddAssemblies("KARA.NET", nameof(KPM));
 
 var builder = WebApplication.CreateBuilder(args);

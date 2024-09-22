@@ -1,8 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using KARA.NET.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace KARA.NET.Data.EntityFramework;
 public abstract class EntityTypeConfiguration<TEntity>
-    where TEntity : class
+    : IEntityTypeConfiguration
+    where TEntity : class, IEntity
 {
-    public abstract void Map(EntityTypeBuilder<TEntity> entity);
+    private ModelBuilder ModelBuilder { get; }
+
+    protected EntityTypeBuilder<TEntity> Entity
+    {
+        get => this.ModelBuilder.Entity<TEntity>();
+    }
+
+    protected EntityTypeConfiguration(ModelBuilder modelBuilder)
+    {
+        this.ModelBuilder = modelBuilder;
+    }
 }

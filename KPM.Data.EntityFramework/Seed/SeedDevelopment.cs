@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace KPM.Data.EntityFramework;
 public class SeedDevelopment
-    : ISeed
+    : ISeedDevelopment
 {
     public void Seed(ModelBuilder modelBuilder)
     {
