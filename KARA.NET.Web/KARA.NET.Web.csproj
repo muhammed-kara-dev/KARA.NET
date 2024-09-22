@@ -8,8 +8,9 @@
   <ItemGroup>
     <ProjectReference Include="..\KARA.NET\KARA.NET.csproj" />
     <ProjectReference Include="..\KARA.NET.AspNet\KARA.NET.AspNet.csproj" />
-    <ProjectReference Include="..\KARA.NET.Radzen\KARA.NET.Radzen.csproj" />
-    <ProjectReference Include="..\KPM.Business\KPM.Business.csproj" />
+    <ProjectReference Include="..\KARA.NET.Data.EntityFramework\KARA.NET.Data.EntityFramework.csproj" />
+    <ProjectReference Include="..\KARA.NET.RadzenBlazor\KARA.NET.RadzenBlazor.csproj" />
+    <ProjectReference Include="..\KPM.Blazor\KPM.Blazor.csproj" />
   </ItemGroup>
 
 </Project>

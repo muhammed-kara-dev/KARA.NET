@@ -2,7 +2,7 @@
 using KPM.Models;
 using Microsoft.AspNetCore.Components;
 
-namespace KPM.Server.Web.Pages;
+namespace KPM.Blazor.Pages;
 public partial class Password
 {
     private List<PasswordModel> Passwords { get; set; } = new();

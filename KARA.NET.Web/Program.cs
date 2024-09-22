@@ -1,9 +1,8 @@
 using KARA.NET.AspNet;
 using KARA.NET.Data.EntityFramework;
-using KARA.NET.Radzen;
-using KPM.Server.Web.Components;
+using KARA.NET.RadzenBlazor;
+using KARA.NET.Web;
 
-// TODO authorization
 var assemblies = KARA.NET.App.AddAssemblies("KARA.NET", "KPM");
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,5 +22,5 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAntiforgery();
-app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
+app.MapRazorComponents<_App>().AddInteractiveServerRenderMode();
 app.Run();
