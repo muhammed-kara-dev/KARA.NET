@@ -1,10 +1,10 @@
 ﻿using KARA.NET.Business;
 using KARA.NET.Data;
-using KPM.Data.EntityFramework;
-using KPM.Entities;
 using Microsoft.Extensions.Logging;
+using PasswordManager.Data.EntityFramework;
+using PasswordManager.Entities;
 
-namespace KPM.Business;
+namespace PasswordManager.Business;
 public class PasswordService
     : BaseService
 {

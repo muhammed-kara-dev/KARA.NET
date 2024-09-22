@@ -1,8 +1,8 @@
 ﻿using KARA.NET.Data.EntityFramework;
-using KPM.Entities;
 using Microsoft.EntityFrameworkCore;
+using PasswordManager.Entities;
 
-namespace KPM.Data.EntityFramework;
+namespace PasswordManager.Data.EntityFramework;
 public class SeedDevelopment
     : ISeedDevelopment
 {

@@ -1,6 +1,6 @@
 ﻿using KARA.NET.Entities;
 
-namespace KPM.Entities;
+namespace PasswordManager.Entities;
 public class Password
     : BaseEntity<Guid>
 {

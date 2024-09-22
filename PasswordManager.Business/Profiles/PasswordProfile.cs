@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using KPM.Entities;
-using KPM.Models;
+using PasswordManager.Entities;
+using PasswordManager.Models;
 
-namespace KPM.Business;
+namespace PasswordManager.Business;
 public class PasswordProfile
     : Profile
 {

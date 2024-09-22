@@ -10,7 +10,7 @@
     <ProjectReference Include="..\KARA.NET.Blazor\KARA.NET.Blazor.csproj" />
     <ProjectReference Include="..\KARA.NET.Blazor.Bootstrap\KARA.NET.Blazor.Bootstrap.csproj" />
     <ProjectReference Include="..\KARA.NET.Blazor.Radzen\KARA.NET.Blazor.Radzen2.csproj" />
-    <ProjectReference Include="..\KPM.Blazor\KPM.Blazor.csproj" />
+    <ProjectReference Include="..\PasswordManager.Blazor\PasswordManager.Blazor.csproj" />
   </ItemGroup>
 
 </Project>

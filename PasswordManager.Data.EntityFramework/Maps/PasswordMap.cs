@@ -1,8 +1,8 @@
 ﻿using KARA.NET.Data.EntityFramework;
-using KPM.Entities;
 using Microsoft.EntityFrameworkCore;
+using PasswordManager.Entities;
 
-namespace KPM.Data.EntityFramework;
+namespace PasswordManager.Data.EntityFramework;
 public class PasswordMap
     : EntityTypeConfiguration<Password>
 {
@@ -13,6 +13,7 @@ public class PasswordMap
         this.Entity.Property(x => x.Name)
             .HasMaxLength(20)
             .IsRequired();
-        this.Entity.Property(x => x.Value);
+        this.Entity.Property(x => x.Value)
+            .IsRequired();
     }
 }

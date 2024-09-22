@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using KARA.NET.Business;
 using KARA.NET.Data;
-using KPM.Models;
 using Microsoft.Extensions.Logging;
+using PasswordManager.Models;
 
-namespace KPM.Business;
+namespace PasswordManager.Business;
 public class PasswordFacade
     : BaseFacade
 {

@@ -9,7 +9,10 @@
     <RadzenStack Orientation="Orientation.Horizontal">
         <RadzenStack Orientation="Orientation.Vertical">
             <RadzenLink Path="/" Text="Home" />
-            <RadzenLink Path="/password" Text="Password" />
+            @foreach (var navigation in ReflectionUtils.CreateInstancesOfInterface<INavigation>(App.Assemblies))
+            {
+                <RadzenLink Icon="@navigation.Icon" Path="@navigation.Path" Text="@navigation.Text" />
+            }
         </RadzenStack>
         <RadzenStack Orientation="Orientation.Vertical">
             @this.Body
