@@ -1,9 +1,8 @@
-﻿using KARA.NET;
-using KARA.NET.Entities;
+﻿using KARA.NET.Entities;
 
 namespace Authorization.Entities;
 public class User
-    : BaseEntity<Guid>, IUser
+    : BaseEntity<Guid>
 {
     public string Name { get; set; }
     public string Email { get; set; }

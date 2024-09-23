@@ -1,5 +1,7 @@
-﻿namespace KARA.NET;
+﻿using System.Security.Principal;
+
+namespace KARA.NET;
 public interface IAuthorizationService
 {
-    public bool IsAuthorized { get; }
+    public IIdentity Identity { get; }
 }
