@@ -39,13 +39,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KARA.NET.Blazor.Bootstrap",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PasswordManager", "PasswordManager\PasswordManager.csproj", "{327670E0-8571-4757-80BC-255F357E6798}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization.Entities", "Authorization.Entities\Authorization.Entities.csproj", "{099D3611-8746-4C52-AD51-BC7BF2C7E4BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization.Entities", "Authorization.Entities\Authorization.Entities.csproj", "{099D3611-8746-4C52-AD51-BC7BF2C7E4BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization", "Authorization\Authorization.csproj", "{BFE100D4-FDC5-461D-A45C-CE8D2FC941F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization", "Authorization\Authorization.csproj", "{BFE100D4-FDC5-461D-A45C-CE8D2FC941F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization.Models", "Authorization.Models\Authorization.Models.csproj", "{D5A4010A-98FA-4B2F-AE0C-6F0A434CA1C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization.Models", "Authorization.Models\Authorization.Models.csproj", "{D5A4010A-98FA-4B2F-AE0C-6F0A434CA1C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization.Data.EntityFramework", "Authorization.Data.EntityFramework\Authorization.Data.EntityFramework.csproj", "{B2355DF1-9C08-45CB-8D12-02EC01B0A45C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization.Data.EntityFramework", "Authorization.Data.EntityFramework\Authorization.Data.EntityFramework.csproj", "{B2355DF1-9C08-45CB-8D12-02EC01B0A45C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization.Business", "Authorization.Business\Authorization.Business.csproj", "{301DC4E6-D00D-4779-8A75-342B1ADDF444}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization.Blazor", "Authorization.Blazor\Authorization.Blazor.csproj", "{B46BE47C-0067-45C7-8E03-62488C93614B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -129,6 +133,14 @@ Global
 		{B2355DF1-9C08-45CB-8D12-02EC01B0A45C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2355DF1-9C08-45CB-8D12-02EC01B0A45C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2355DF1-9C08-45CB-8D12-02EC01B0A45C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{301DC4E6-D00D-4779-8A75-342B1ADDF444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{301DC4E6-D00D-4779-8A75-342B1ADDF444}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{301DC4E6-D00D-4779-8A75-342B1ADDF444}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{301DC4E6-D00D-4779-8A75-342B1ADDF444}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B46BE47C-0067-45C7-8E03-62488C93614B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B46BE47C-0067-45C7-8E03-62488C93614B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B46BE47C-0067-45C7-8E03-62488C93614B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B46BE47C-0067-45C7-8E03-62488C93614B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -153,6 +165,8 @@ Global
 		{BFE100D4-FDC5-461D-A45C-CE8D2FC941F2} = {09C860FA-D839-47C1-A112-826799002038}
 		{D5A4010A-98FA-4B2F-AE0C-6F0A434CA1C9} = {09C860FA-D839-47C1-A112-826799002038}
 		{B2355DF1-9C08-45CB-8D12-02EC01B0A45C} = {09C860FA-D839-47C1-A112-826799002038}
+		{301DC4E6-D00D-4779-8A75-342B1ADDF444} = {09C860FA-D839-47C1-A112-826799002038}
+		{B46BE47C-0067-45C7-8E03-62488C93614B} = {09C860FA-D839-47C1-A112-826799002038}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A2D607EF-AC6D-43FA-8AF9-4BF208763BF3}

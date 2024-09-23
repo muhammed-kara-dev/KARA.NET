@@ -3,7 +3,7 @@ using PasswordManager.Business;
 using PasswordManager.Models;
 
 namespace PasswordManager.Blazor.Pages;
-public partial class Password
+public partial class PasswordList
 {
     private List<PasswordModel> Passwords { get; set; } = new();
     [Inject] public PasswordFacade Facade { get; set; }
