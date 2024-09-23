@@ -18,7 +18,7 @@ public class PasswordFacade
 
     public PasswordModel GetByID(Guid id)
     {
-        using var uow = this.UnitOfWorkFactory.Create();
+        using var uow = this.UnitOfWorkFactory.Create(nameof(PasswordManager));
         var entity = this.PasswordService.GetByID(uow, id);
         var model = this.Mapper.Map<PasswordModel>(entity);
         return model;
@@ -26,7 +26,7 @@ public class PasswordFacade
 
     public List<PasswordModel> GetAll()
     {
-        using var uow = this.UnitOfWorkFactory.Create();
+        using var uow = this.UnitOfWorkFactory.Create(nameof(PasswordManager));
         var entities = this.PasswordService.GetAll(uow);
         var models = entities.Select(this.Mapper.Map<PasswordModel>).ToList();
         return models;

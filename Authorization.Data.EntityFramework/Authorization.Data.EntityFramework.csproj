@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KARA.NET\KARA.NET.csproj" />
+    <ProjectReference Include="..\KARA.NET.Data.EntityFramework\KARA.NET.Data.EntityFramework.csproj" />
+    <ProjectReference Include="..\Authorization\Authorization.csproj" />
+    <ProjectReference Include="..\Authorization.Entities\Authorization.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
+</Project>

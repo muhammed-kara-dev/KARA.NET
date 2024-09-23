@@ -37,7 +37,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PasswordManager.Blazor", "P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KARA.NET.Blazor.Bootstrap", "KARA.NET.Blazor.Bootstrap\KARA.NET.Blazor.Bootstrap.csproj", "{BBC7E666-0783-44D1-858D-FB07962C9034}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordManager", "PasswordManager\PasswordManager.csproj", "{327670E0-8571-4757-80BC-255F357E6798}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PasswordManager", "PasswordManager\PasswordManager.csproj", "{327670E0-8571-4757-80BC-255F357E6798}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization.Entities", "Authorization.Entities\Authorization.Entities.csproj", "{099D3611-8746-4C52-AD51-BC7BF2C7E4BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization", "Authorization\Authorization.csproj", "{BFE100D4-FDC5-461D-A45C-CE8D2FC941F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization.Models", "Authorization.Models\Authorization.Models.csproj", "{D5A4010A-98FA-4B2F-AE0C-6F0A434CA1C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization.Data.EntityFramework", "Authorization.Data.EntityFramework\Authorization.Data.EntityFramework.csproj", "{B2355DF1-9C08-45CB-8D12-02EC01B0A45C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +113,22 @@ Global
 		{327670E0-8571-4757-80BC-255F357E6798}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{327670E0-8571-4757-80BC-255F357E6798}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{327670E0-8571-4757-80BC-255F357E6798}.Release|Any CPU.Build.0 = Release|Any CPU
+		{099D3611-8746-4C52-AD51-BC7BF2C7E4BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{099D3611-8746-4C52-AD51-BC7BF2C7E4BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{099D3611-8746-4C52-AD51-BC7BF2C7E4BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{099D3611-8746-4C52-AD51-BC7BF2C7E4BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFE100D4-FDC5-461D-A45C-CE8D2FC941F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFE100D4-FDC5-461D-A45C-CE8D2FC941F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFE100D4-FDC5-461D-A45C-CE8D2FC941F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFE100D4-FDC5-461D-A45C-CE8D2FC941F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5A4010A-98FA-4B2F-AE0C-6F0A434CA1C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5A4010A-98FA-4B2F-AE0C-6F0A434CA1C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5A4010A-98FA-4B2F-AE0C-6F0A434CA1C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5A4010A-98FA-4B2F-AE0C-6F0A434CA1C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2355DF1-9C08-45CB-8D12-02EC01B0A45C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2355DF1-9C08-45CB-8D12-02EC01B0A45C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2355DF1-9C08-45CB-8D12-02EC01B0A45C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2355DF1-9C08-45CB-8D12-02EC01B0A45C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -125,6 +149,10 @@ Global
 		{A2F9347B-14F2-4216-9C8A-896F20D6DC24} = {09C860FA-D839-47C1-A112-826799002038}
 		{BBC7E666-0783-44D1-858D-FB07962C9034} = {A848CD98-D0EC-4DB0-8917-D9EE335C6CAE}
 		{327670E0-8571-4757-80BC-255F357E6798} = {09C860FA-D839-47C1-A112-826799002038}
+		{099D3611-8746-4C52-AD51-BC7BF2C7E4BD} = {09C860FA-D839-47C1-A112-826799002038}
+		{BFE100D4-FDC5-461D-A45C-CE8D2FC941F2} = {09C860FA-D839-47C1-A112-826799002038}
+		{D5A4010A-98FA-4B2F-AE0C-6F0A434CA1C9} = {09C860FA-D839-47C1-A112-826799002038}
+		{B2355DF1-9C08-45CB-8D12-02EC01B0A45C} = {09C860FA-D839-47C1-A112-826799002038}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A2D607EF-AC6D-43FA-8AF9-4BF208763BF3}
