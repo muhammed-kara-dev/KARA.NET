@@ -8,10 +8,10 @@
     </RadzenStack>
     <RadzenStack Orientation="Orientation.Horizontal">
         <RadzenStack Orientation="Orientation.Vertical">
-            <RadzenLink Path="/" Text="Home" />
+            <RadzenLink Path="/" Text="@Translator.GetTranslation(nameof(Translation.Home))" />
             @foreach (var navigation in ReflectionUtils.CreateInstancesOfInterface<INavigation>(App.Assemblies))
             {
-                <RadzenLink Icon="@navigation.Icon" Path="@navigation.Path" Text="@navigation.Text" />
+                <RadzenLink Icon="@navigation.Icon" Path="@navigation.Path" Text="@Translator.GetTranslation(navigation.Text)" />
             }
         </RadzenStack>
         <RadzenStack Orientation="Orientation.Vertical">
@@ -19,8 +19,8 @@
         </RadzenStack>
     </RadzenStack>
     <div id="blazor-error-ui" style="display: none;">
-        <RadzenLabel Text="An unhandled error has occurred." />
-        <RadzenLink Path="" Text="Reload" />
+        <RadzenLabel Text="@Translator.GetTranslation(nameof(Translation.UnhandledExceptionOccured))" />
+        <RadzenLink Path="" Text="@Translator.GetTranslation(nameof(Translation.Reload))" />
         <RadzenLink Text="X" />
     </div>
 </RadzenStack>
