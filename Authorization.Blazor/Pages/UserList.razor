@@ -1,4 +1,5 @@
 ﻿@page "/user/list"
+<PageTitle>@Translator.GetTranslation(nameof(Translation.Users))</PageTitle>
 <RadzenLabel Text="@Translator.GetTranslation(nameof(Translation.Users))" />
 @foreach (var user in this.Users)
 {
