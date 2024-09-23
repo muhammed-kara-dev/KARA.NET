@@ -1,7 +1,13 @@
+using Authorization.Blazor;
 using KARA.NET;
 using KARA.NET.Data.EntityFramework;
 using KARA.NET.Web;
 using KARA.NET.Web.Pages;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Components.Authorization;
+
+// TODO ProtectedSessionStorage
+// TODO Authorization
 
 var assemblies = App.AddAssembliesFromExecutionPath();
 Translator.SetResource();
@@ -17,21 +23,14 @@ foreach (var serviceManager in ReflectionUtils.CreateInstancesOfInterface<IServi
     serviceManager.Register(builder.Services);
 }
 builder.Services.AddCascadingAuthenticationState();
-builder.Services.AddAuthenticationCore();
-builder.Services.ConfigureApplicationCookie(x =>
-{
-    x.LoginPath = "/authorization/login";
-    x.LogoutPath = "/authorization/logout";
-    x.AccessDeniedPath = "/authorization/accessdenied";
-});
-//builder.Services.AddCors(x =>
-//{
-//    x.AddPolicy("CorsPolicy", y =>
-//    {
-//        y.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-//    });
-//});
-//builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingServerAuthenticationStateProvider<IUser>>();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(x =>
+    {
+        x.LoginPath = "/authorization/login";
+        x.LogoutPath = "/authorization/logout";
+        x.AccessDeniedPath = "/authorization/accessdenied";
+    });
+builder.Services.AddScoped<AuthenticationStateProvider, AuthorizationProvider>();
 
 var app = builder.Build();
 if (!app.Environment.IsDevelopment())

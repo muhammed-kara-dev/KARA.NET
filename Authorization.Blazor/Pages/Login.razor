@@ -1,5 +1,15 @@
 ﻿@page "/authorization/login"
 <PageTitle>@Translator.GetTranslation(nameof(Translation.Login))</PageTitle>
-<RadzenStack>
-    <RadzenLabel Text="login" />
+<RadzenStack Orientation="Orientation.Vertical">
+    <RadzenStack Orientation="Orientation.Horizontal">
+        <RadzenStack Orientation="Orientation.Vertical">
+            <RadzenLabel Text="@Translator.GetTranslation(nameof(Translation.Name))" />
+            <RadzenTextBox @bind-Value="this.Name" />
+        </RadzenStack>
+        <RadzenStack Orientation="Orientation.Vertical">
+            <RadzenLabel Text="@Translator.GetTranslation(nameof(Translation.Password))" />
+            <RadzenTextBox @bind-Value="this.Password" />
+        </RadzenStack>
+        <RadzenButton Icon="login" Text="@Translator.GetTranslation(nameof(Translation.Login))" Click="this.SubmitAsync" />
+    </RadzenStack>
 </RadzenStack>
