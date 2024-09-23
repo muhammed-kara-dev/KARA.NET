@@ -4,20 +4,23 @@ using System.Resources;
 namespace KARA.NET;
 public static class Translator
 {
-    private static ResourceManager ResourceManager { get; set; }
+    private static List<ResourceManager> ResourceManagers { get; } = new();
     public static CultureInfo Culture { get; set; } = CultureInfo.CurrentCulture;
 
-    public static void SetResource<T>()
+    public static void SetResource(string resourceName = "Translation")
     {
-        Translator.ResourceManager = new ResourceManager(typeof(T));
+        foreach (var type in ReflectionUtils.GetByName(App.Assemblies, resourceName))
+        {
+            Translator.ResourceManagers.Add(new ResourceManager(type));
+        }
     }
 
     public static string GetTranslation(string key)
     {
-        if (Translator.ResourceManager == null)
-        {
-            throw new Exception("resource manager is null");
-        }
-        return Translator.ResourceManager.GetString(key, Translator.Culture);
+        return Translator.ResourceManagers
+            .Select(x => x.GetString(key, Translator.Culture))
+            .Where(x => !string.IsNullOrWhiteSpace(x))
+            .DefaultIfEmpty(string.Empty)
+            .First();
     }
 }

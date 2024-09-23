@@ -2,13 +2,12 @@ using KARA.NET;
 using KARA.NET.Data.EntityFramework;
 using KARA.NET.Web;
 using KARA.NET.Web.Pages;
-using PasswordManager;
 
 // TODO authorization
 // TODO design
 
 var assemblies = App.AddAssemblies("KARA.NET", nameof(PasswordManager));
-Translator.SetResource<Translation>();
+Translator.SetResource();
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile($"appsettings.{Environment.MachineName}.json", optional: true, reloadOnChange: true);
