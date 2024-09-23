@@ -21,6 +21,12 @@ public class UserRepository
         return this.Query.First(x => x.Name == name && x.Password == password);
     }
 
+    public bool TryGet(Guid id, out User user)
+    {
+        user = this.Query.FirstOrDefault(x => x.ID == id);
+        return user != null;
+    }
+
     public List<User> GetAll()
     {
         return this.Query.ToList();

@@ -19,6 +19,12 @@ public class UserService
         return repo.Get(id);
     }
 
+    public bool TryGet(IUnitOfWork uow, Guid id, out User user)
+    {
+        var repo = this.RepositoryFactory.Create<UserRepository>(uow);
+        return repo.TryGet(id, out user);
+    }
+
     public User Get(IUnitOfWork uow, string name, string password)
     {
         var repo = this.RepositoryFactory.Create<UserRepository>(uow);

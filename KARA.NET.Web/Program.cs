@@ -1,4 +1,3 @@
-using Authorization.Blazor;
 using KARA.NET;
 using KARA.NET.Data.EntityFramework;
 using KARA.NET.Web;
@@ -9,19 +8,31 @@ using Microsoft.AspNetCore.Components.Authorization;
 // TODO ProtectedSessionStorage
 // TODO Authorization
 
+// assemblies
 var assemblies = App.AddAssembliesFromExecutionPath();
+
+// translations
 Translator.SetResource();
 
+// blazor
 var builder = WebApplication.CreateBuilder(args);
-builder.Configuration.AddJsonFile($"appsettings.{Environment.MachineName}.json", optional: true, reloadOnChange: true);
-builder.Services.Configure<List<DatabaseSettings>>(builder.Configuration.GetSection(nameof(DatabaseSettings)));
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// appsettings
+builder.Configuration.AddJsonFile($"appsettings.{Environment.MachineName}.json", optional: true, reloadOnChange: true);
+builder.Services.Configure<List<DatabaseSettings>>(builder.Configuration.GetSection(nameof(DatabaseSettings)));
+
+// logging
 builder.Services.AddLogging(x => x.AddConsole());
+
+// services
 foreach (var serviceManager in ReflectionUtils.CreateInstancesOfInterface<IServiceManager>(App.Assemblies))
 {
     serviceManager.Register(builder.Services);
 }
+
+// authorization
 builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(x =>
@@ -30,8 +41,16 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         x.LogoutPath = "/authorization/logout";
         x.AccessDeniedPath = "/authorization/accessdenied";
     });
-builder.Services.AddScoped<AuthenticationStateProvider, AuthorizationProvider>();
+foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IAuthorizationService>(App.Assemblies))
+{
+    builder.Services.AddScoped(typeof(IAuthorizationService), type);
+}
+foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<AuthenticationStateProvider>(App.Assemblies))
+{
+    builder.Services.AddScoped(typeof(AuthenticationStateProvider), type);
+}
 
+// app
 var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
