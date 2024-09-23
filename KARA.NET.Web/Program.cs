@@ -2,7 +2,6 @@ using KARA.NET;
 using KARA.NET.Data.EntityFramework;
 using KARA.NET.Web;
 using KARA.NET.Web.Pages;
-using Microsoft.AspNetCore.Components.Authorization;
 
 var assemblies = App.AddAssembliesFromExecutionPath();
 Translator.SetResource();
