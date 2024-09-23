@@ -3,21 +3,14 @@ using KARA.NET.Data.EntityFramework;
 using KARA.NET.Web;
 using KARA.NET.Web.Pages;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Components.Authorization;
 
-// TODO ProtectedSessionStorage
-// TODO Authorization
-
-// assemblies
-var assemblies = App.AddAssembliesFromExecutionPath();
-
-// translations
-Translator.SetResource();
-
-// blazor
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// preparation
+var assemblies = App.AddAssembliesFromExecutionPath();
+Translator.SetResource();
 
 // appsettings
 builder.Configuration.AddJsonFile($"appsettings.{Environment.MachineName}.json", optional: true, reloadOnChange: true);
@@ -25,12 +18,6 @@ builder.Services.Configure<List<DatabaseSettings>>(builder.Configuration.GetSect
 
 // logging
 builder.Services.AddLogging(x => x.AddConsole());
-
-// services
-foreach (var serviceManager in ReflectionUtils.CreateInstancesOfInterface<IServiceManager>(App.Assemblies))
-{
-    serviceManager.Register(builder.Services);
-}
 
 // authorization
 builder.Services.AddCascadingAuthenticationState();
@@ -41,13 +28,11 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         x.LogoutPath = "/authorization/logout";
         x.AccessDeniedPath = "/authorization/accessdenied";
     });
-foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IAuthorizationService>(App.Assemblies))
+
+// services
+foreach (var serviceManager in ReflectionUtils.CreateInstancesOfInterface<IServiceManager>(App.Assemblies))
 {
-    builder.Services.AddScoped(typeof(IAuthorizationService), type);
-}
-foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<AuthenticationStateProvider>(App.Assemblies))
-{
-    builder.Services.AddScoped(typeof(AuthenticationStateProvider), type);
+    serviceManager.Register(builder.Services);
 }
 
 // app
