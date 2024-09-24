@@ -19,7 +19,7 @@ public class AuthorizationService
     private IUnitOfWorkFactory UnitOfWorkFactory { get; }
     private UserService UserService { get; }
     private Guid UserID { get; set; }
-    public IIdentity Identity { get; private set; }
+    public IIdentity Identity { get; private set; } = new ClaimsIdentity();
 
     public AuthorizationService(ILoggerFactory loggerFactory, IMapper mapper, IRepositoryFactory repositoryFactory, IStorage storage, IUnitOfWorkFactory unitOfWorkFactory, UserService userService)
         : base(loggerFactory, repositoryFactory)
