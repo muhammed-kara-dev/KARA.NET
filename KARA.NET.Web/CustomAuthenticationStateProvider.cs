@@ -1,8 +1,7 @@
-﻿using KARA.NET;
-using Microsoft.AspNetCore.Components.Authorization;
+﻿using Microsoft.AspNetCore.Components.Authorization;
 using System.Security.Claims;
 
-namespace Authorization.Blazor;
+namespace KARA.NET.Web;
 public class CustomAuthenticationStateProvider
     : AuthenticationStateProvider
 {

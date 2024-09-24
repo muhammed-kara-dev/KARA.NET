@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PasswordManager {
+namespace KARA.NET.Web {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace PasswordManager {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PasswordManager.Translation", typeof(Translation).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KARA.NET.Web.Translation", typeof(Translation).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,29 @@ namespace PasswordManager {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Passwords.
+        ///   Looks up a localized string similar to Home.
         /// </summary>
-        public static string Passwords {
+        public static string Home {
             get {
-                return ResourceManager.GetString("Passwords", resourceCulture);
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reload.
+        /// </summary>
+        public static string Reload {
+            get {
+                return ResourceManager.GetString("Reload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unhandled error has occurred.
+        /// </summary>
+        public static string UnhandledExceptionOccured {
+            get {
+                return ResourceManager.GetString("UnhandledExceptionOccured", resourceCulture);
             }
         }
     }

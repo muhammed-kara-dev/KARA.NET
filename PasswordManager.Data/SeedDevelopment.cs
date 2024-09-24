@@ -1,12 +1,12 @@
-﻿using KARA.NET.Data.EntityFramework;
-using Microsoft.EntityFrameworkCore;
+﻿using KARA.NET.Data;
+using KARA.NET.Entities;
 using PasswordManager.Entities;
 
-namespace PasswordManager.Data.EntityFramework;
+namespace PasswordManager.Data;
 public class SeedDevelopment
     : ISeedDevelopment
 {
-    public void Seed(ModelBuilder modelBuilder)
+    public void Build(Action<IEntity> add)
     {
         var passwords = new List<Password>
         {
@@ -29,6 +29,9 @@ public class SeedDevelopment
                 Value = Array.Empty<byte>(),
             },
         };
-        modelBuilder.Entity<Password>().HasData(passwords);
+        foreach (var password in passwords)
+        {
+            add(password);
+        }
     }
 }

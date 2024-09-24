@@ -3,6 +3,7 @@ using KARA.NET.Data.EntityFramework;
 using KARA.NET.Web;
 using KARA.NET.Web.Pages;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Components.Authorization;
 
 // assemblies
 var assemblies = App.AddAssembliesFromExecutionPath();
@@ -31,6 +32,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         x.LogoutPath = "/authorization/logout";
         x.AccessDeniedPath = "/authorization/accessdenied";
     });
+foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<AuthenticationStateProvider>(App.Assemblies))
+{
+    builder.Services.AddScoped(typeof(AuthenticationStateProvider), type);
+}
 
 // services
 foreach (var serviceManager in ReflectionUtils.CreateInstancesOfInterface<IServiceManager>(App.Assemblies))

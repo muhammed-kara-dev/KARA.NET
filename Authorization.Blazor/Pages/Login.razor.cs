@@ -1,19 +1,17 @@
-﻿using KARA.NET.Storage;
+﻿using KARA.NET;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Authorization;
 
 namespace Authorization.Blazor.Pages;
 public partial class Login
 {
-    [Inject] private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
+    [Inject] private IAuthorizationService AuthorizationService { get; set; }
     [Inject] private NavigationManager NavigationManager { get; set; }
-    [Inject] private IStorage Storage { get; set; }
     private string Name { get; set; }
     private string Password { get; set; }
 
     private async Task SubmitAsync()
     {
-        await this.Storage.WriteAsync();
+        await this.AuthorizationService.LoginAsync(this.Name, this.Password);
         this.NavigationManager.NavigateTo("/");
     }
 }

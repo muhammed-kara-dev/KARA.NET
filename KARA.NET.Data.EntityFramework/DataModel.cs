@@ -36,20 +36,20 @@ public class DataModel
         {
             foreach (var seed in ReflectionUtils.CreateInstancesOfInterface<ISeedBase>(App.Assemblies))
             {
-                seed.Seed(modelBuilder);
+                seed.Build(x => modelBuilder.Entity(x.GetType()).HasData(x));
             }
             if (ApplicationUtils.IsDebug)
             {
                 foreach (var seed in ReflectionUtils.CreateInstancesOfInterface<ISeedDevelopment>(App.Assemblies))
                 {
-                    seed.Seed(modelBuilder);
+                    seed.Build(x => modelBuilder.Entity(x.GetType()).HasData(x));
                 }
             }
             else
             {
                 foreach (var seed in ReflectionUtils.CreateInstancesOfInterface<ISeedProduction>(App.Assemblies))
                 {
-                    seed.Seed(modelBuilder);
+                    seed.Build(x => modelBuilder.Entity(x.GetType()).HasData(x));
                 }
             }
         }
