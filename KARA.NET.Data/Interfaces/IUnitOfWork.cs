@@ -5,5 +5,4 @@ public interface IUnitOfWork
     public bool IsComplete { get; }
     public void Complete();
     public void Flush();
-    public Task FlushAsync();
 }
