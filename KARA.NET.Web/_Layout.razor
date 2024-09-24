@@ -1,4 +1,16 @@
 ﻿@inherits LayoutComponentBase
+@code
+{
+    [Inject] private KARA.NET.IAuthorizationService AuthorizationService { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await this.AuthorizationService.InitAsync();
+        }
+    }
+}
 <RadzenStack Orientation="Orientation.Vertical">
     <RadzenStack Orientation="Orientation.Horizontal">
         <RadzenStack Orientation="Orientation.Horizontal">

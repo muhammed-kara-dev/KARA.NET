@@ -14,24 +14,29 @@ public class AuthorizationService
 {
     private const string SESSION_ID = $"{nameof(AuthorizationService)}.{nameof(AuthorizationService.SESSION_ID)}";
 
+    private IMapper Mapper { get; }
     private IStorage Storage { get; }
+    private IUnitOfWorkFactory UnitOfWorkFactory { get; }
+    private UserService UserService { get; }
     private Guid UserID { get; set; }
     public IIdentity Identity { get; private set; }
 
     public AuthorizationService(ILoggerFactory loggerFactory, IMapper mapper, IRepositoryFactory repositoryFactory, IStorage storage, IUnitOfWorkFactory unitOfWorkFactory, UserService userService)
         : base(loggerFactory, repositoryFactory)
     {
+        this.Mapper = mapper;
         this.Storage = storage;
-        this.LoadAsync(mapper, unitOfWorkFactory, userService).RunSynchronously();
+        this.UnitOfWorkFactory = unitOfWorkFactory;
+        this.UserService = userService;
     }
 
-    private async Task LoadAsync(IMapper mapper, IUnitOfWorkFactory unitOfWorkFactory, UserService userService)
+    public async Task InitAsync()
     {
         var id = await this.Storage.ReadAsync(AuthorizationService.SESSION_ID, Guid.Empty);
-        using var uow = unitOfWorkFactory.Create(nameof(Authorization));
-        if (userService.TryGet(uow, id, out var entity))
+        using var uow = this.UnitOfWorkFactory.Create(nameof(Authorization));
+        if (this.UserService.TryGet(uow, id, out var entity))
         {
-            var model = mapper.Map<UserModel>(entity);
+            var model = this.Mapper.Map<UserModel>(entity);
             this.UserID = model.ID;
             this.Identity = model;
         }
