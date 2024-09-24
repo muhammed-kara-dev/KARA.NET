@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 var assemblies = App.AddAssembliesFromExecutionPath();
 
 // translator
-Translator.SetResource();
+Translator.SetResource(nameof(Translation));
 
 // builder
 var builder = WebApplication.CreateBuilder(args);

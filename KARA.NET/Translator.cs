@@ -7,7 +7,7 @@ public static class Translator
     private static List<ResourceManager> ResourceManagers { get; } = new();
     public static CultureInfo Culture { get; set; } = CultureInfo.CurrentCulture;
 
-    public static void SetResource(string resourceName = "Translation")
+    public static void SetResource(string resourceName)
     {
         foreach (var type in ReflectionUtils.GetByName(App.Assemblies, resourceName))
         {
