@@ -4,13 +4,16 @@ using KARA.NET.Web;
 using KARA.NET.Web.Pages;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
+// assemblies
+var assemblies = App.AddAssembliesFromExecutionPath();
+
+// translator
+Translator.SetResource();
+
+// builder
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-
-// preparation
-var assemblies = App.AddAssembliesFromExecutionPath();
-Translator.SetResource();
 
 // appsettings
 builder.Configuration.AddJsonFile($"appsettings.{Environment.MachineName}.json", optional: true, reloadOnChange: true);

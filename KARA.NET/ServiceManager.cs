@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using KARA.NET.Data;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KARA.NET.Blazor;
+namespace KARA.NET;
 public class ServiceManager
     : IServiceManager
 {
@@ -11,14 +10,6 @@ public class ServiceManager
         foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<Profile>(App.Assemblies))
         {
             services.AddAutoMapper(type);
-        }
-        foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IUnitOfWorkFactory>(App.Assemblies))
-        {
-            services.AddScoped(typeof(IUnitOfWorkFactory), type);
-        }
-        foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IRepositoryFactory>(App.Assemblies))
-        {
-            services.AddScoped(typeof(IRepositoryFactory), type);
         }
         foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IService>(App.Assemblies))
         {

@@ -1,4 +1,4 @@
-﻿namespace KARA.NET.Blazor;
+﻿namespace KARA.NET;
 public interface INavigation
 {
     public string Icon { get; }
