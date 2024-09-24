@@ -8,13 +8,12 @@ public class SeedDevelopment
 {
     public void Build(Action<IEntity> add)
     {
-        var user = new User
+        add(new User
         {
             ID = Guid.Parse("5bd5bda4-3a99-4145-884c-377dacf5f48f"),
             Name = "admin",
             Email = "webmaster@kara-dev.com",
-            Password = "1234",
-        };
-        add(user);
+            Password = "1",
+        });
     }
 }

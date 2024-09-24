@@ -33,6 +33,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         x.AccessDeniedPath = "/authorization/accessdenied";
     });
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IAuthorizationService>(App.Assemblies))
+{
+    builder.Services.AddScoped(typeof(IAuthorizationService), type);
+}
 
 // services
 foreach (var serviceManager in ReflectionUtils.CreateInstancesOfInterface<IServiceManager>(App.Assemblies))
