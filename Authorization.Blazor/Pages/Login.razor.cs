@@ -12,6 +12,6 @@ public partial class Login
     private async Task SubmitAsync()
     {
         await this.AuthorizationService.LoginAsync(this.Name, this.Password);
-        this.NavigationManager.Refresh(forceReload: true);
+        this.NavigationManager.NavigateTo("/");
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 var assemblies = App.AddAssembliesFromExecutionPath();
 
 // translator
-Translator.SetResource();
+Translator.SetResource(nameof(Translation));
 
 // builder
 var builder = WebApplication.CreateBuilder(args);
@@ -32,11 +32,11 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         x.LogoutPath = "/authorization/logout";
         x.AccessDeniedPath = "/authorization/accessdenied";
     });
-foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<AuthenticationStateProvider>(App.Assemblies))
-{
-    //builder.Services.AddScoped(typeof(AuthenticationStateProvider), type);
-}
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IAuthorizationService>(App.Assemblies))
+{
+    builder.Services.AddScoped(typeof(IAuthorizationService), type);
+}
 
 // services
 foreach (var serviceManager in ReflectionUtils.CreateInstancesOfInterface<IServiceManager>(App.Assemblies))
