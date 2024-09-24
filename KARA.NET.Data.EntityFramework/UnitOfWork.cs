@@ -39,9 +39,4 @@ public class UnitOfWork
     {
         this.DbContext.SaveChanges();
     }
-
-    public async Task FlushAsync()
-    {
-        await this.DbContext.SaveChangesAsync();
-    }
 }

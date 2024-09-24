@@ -6,10 +6,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="Translation.Designer.cs">
+      <DependentUpon>Translation.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Translation.resx">
+      <LastGenOutput>Translation.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\KARA.NET\KARA.NET.csproj" />
-    <ProjectReference Include="..\KARA.NET.Blazor\KARA.NET.Blazor.csproj" />
     <ProjectReference Include="..\KARA.NET.Blazor.Bootstrap\KARA.NET.Blazor.Bootstrap.csproj" />
     <ProjectReference Include="..\KARA.NET.Blazor.Radzen\KARA.NET.Blazor.Radzen2.csproj" />
+    <ProjectReference Include="..\KARA.NET.Storage.Blazor\KARA.NET.Storage.Blazor.csproj" />
+    <ProjectReference Include="..\Authorization.Blazor\Authorization.Blazor.csproj" />
     <ProjectReference Include="..\PasswordManager.Blazor\PasswordManager.Blazor.csproj" />
   </ItemGroup>
 

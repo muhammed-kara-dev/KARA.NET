@@ -1,1 +1,37 @@
 ﻿@page "/"
+<PageTitle>@Translator.GetTranslation(nameof(Translation.Home))</PageTitle>
+<RadzenStack>
+    <AuthorizeView>
+        <Authorized>
+            <RadzenLabel Text="@($"authorized as {context.User.Identity.Name}")" />
+        </Authorized>
+        <NotAuthorized>
+            <RadzenLabel Text="not authorized" />
+        </NotAuthorized>
+    </AuthorizeView>
+    <AuthorizeView Roles="Admin">
+        <RadzenLabel Text="you are an admin" />
+    </AuthorizeView>
+    <hr />
+    <RadzenStack Orientation="Orientation.Vertical">
+        <RadzenStack Orientation="Orientation.Horizontal">
+            <RadzenStack Orientation="Orientation.Vertical">
+                <RadzenLabel Text="Identity" />
+            </RadzenStack>
+            <RadzenStack Orientation="Orientation.Vertical">
+                <RadzenLabel Text="@this.User.Identity?.Name" />
+            </RadzenStack>
+        </RadzenStack>
+        <RadzenStack Orientation="Orientation.Horizontal">
+            <RadzenStack Orientation="Orientation.Vertical">
+                <RadzenLabel Text="Claims" />
+            </RadzenStack>
+            <RadzenStack Orientation="Orientation.Vertical">
+                @foreach (var claim in this.User.Claims)
+                {
+                    <RadzenLabel Text="@claim.Value" />
+                }
+            </RadzenStack>
+        </RadzenStack>
+    </RadzenStack>
+</RadzenStack>

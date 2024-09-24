@@ -3,6 +3,13 @@
 namespace KARA.NET;
 public static class ReflectionUtils
 {
+    public static IEnumerable<Type> GetByName(this Assembly[] assemblies, string name)
+    {
+        return assemblies
+            .SelectMany(x => x.GetTypes())
+            .Where(x => x.Name == name);
+    }
+
     public static IEnumerable<Type> GetTypesOfInterface(this Assembly[] assemblies, Type type, bool? isClass = null, bool? isAbstract = null, bool? isInterface = null)
     {
         return assemblies

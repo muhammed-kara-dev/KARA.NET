@@ -1,0 +1,17 @@
+﻿@page "/user/list"
+@attribute [Authorize(Roles = "Admin")]
+<PageTitle>@Translator.GetTranslation(nameof(Translation.Users))</PageTitle>
+<RadzenStack>
+    <RadzenLabel Text="@Translator.GetTranslation(nameof(Translation.Users))" />
+    @foreach (var user in this.Users)
+    {
+        <RadzenRow>
+            <RadzenColumn Size="6">
+                <RadzenLabel Text="@user.ID.ToString()" />
+            </RadzenColumn>
+            <RadzenColumn Size="6">
+                <RadzenLabel Text="@user.Name" />
+            </RadzenColumn>
+        </RadzenRow>
+    }
+</RadzenStack>
