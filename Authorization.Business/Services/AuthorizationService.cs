@@ -15,14 +15,19 @@ public class AuthorizationService
     private const string SESSION_ID = $"{nameof(AuthorizationService)}.{nameof(AuthorizationService.SESSION_ID)}";
 
     private IStorage Storage { get; }
-    private Guid UserID { get; }
-    public IIdentity Identity { get; }
+    private Guid UserID { get; set; }
+    public IIdentity Identity { get; private set; }
 
     public AuthorizationService(ILoggerFactory loggerFactory, IMapper mapper, IRepositoryFactory repositoryFactory, IStorage storage, IUnitOfWorkFactory unitOfWorkFactory, UserService userService)
         : base(loggerFactory, repositoryFactory)
     {
         this.Storage = storage;
-        var id = storage.ReadAsync(AuthorizationService.SESSION_ID, Guid.Empty).Result;
+        this.LoadAsync(mapper, unitOfWorkFactory, userService).RunSynchronously();
+    }
+
+    private async Task LoadAsync(IMapper mapper, IUnitOfWorkFactory unitOfWorkFactory, UserService userService)
+    {
+        var id = await this.Storage.ReadAsync(AuthorizationService.SESSION_ID, Guid.Empty);
         using var uow = unitOfWorkFactory.Create(nameof(Authorization));
         if (userService.TryGet(uow, id, out var entity))
         {
