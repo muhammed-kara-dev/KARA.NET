@@ -2,7 +2,7 @@
 
 namespace KARA.NET.Storage.Blazor;
 public class StorageService
-    : IService, IStorage
+    : IStorage
 {
     private ILocalStorageService Service { get; }
 

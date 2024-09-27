@@ -11,9 +11,5 @@ public class ServiceManager
         {
             services.AddAutoMapper(type);
         }
-        foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IService>(App.Assemblies))
-        {
-            services.AddScoped(type);
-        }
     }
 }

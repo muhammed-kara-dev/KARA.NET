@@ -5,12 +5,6 @@ using KARA.NET.Web.Pages;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components.Authorization;
 
-// assemblies
-var assemblies = App.AddAssembliesFromExecutionPath();
-
-// translator
-Translator.SetResource(nameof(Translation));
-
 // builder
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
@@ -38,11 +32,10 @@ foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IAuthorization
     builder.Services.AddScoped(typeof(IAuthorizationService), type);
 }
 
-// services
-foreach (var serviceManager in ReflectionUtils.CreateInstancesOfInterface<IServiceManager>(App.Assemblies))
-{
-    serviceManager.Register(builder.Services);
-}
+// misc
+var assemblies = App.AddAssembliesFromExecutionPath();
+App.RegisterServices(builder.Services);
+Translator.SetResource(nameof(Translation));
 
 // app
 var app = builder.Build();

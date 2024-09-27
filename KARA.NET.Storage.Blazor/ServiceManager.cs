@@ -8,6 +8,5 @@ public class ServiceManager
     public void Register(IServiceCollection services)
     {
         services.AddBlazoredLocalStorage();
-        services.AddScoped<IStorage, StorageService>();
     }
 }

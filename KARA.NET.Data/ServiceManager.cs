@@ -12,7 +12,7 @@ public class ServiceManager
         }
         foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IRepositoryFactory>(App.Assemblies))
         {
-            services.AddScoped(typeof(IRepositoryFactory), type);
+            services.AddSingleton(typeof(IRepositoryFactory), type);
         }
     }
 }
