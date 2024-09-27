@@ -1,8 +1,7 @@
 ﻿using KARA.NET.Data;
-using KARA.NET.Data.EntityFramework;
 using PasswordManager.Entities;
 
-namespace PasswordManager.Data.EntityFramework;
+namespace PasswordManager.Data;
 public class PasswordRepository
     : BaseRepository<Password>
 {

@@ -1,4 +1,4 @@
-﻿namespace KARA.NET.Data.EntityFramework;
+﻿namespace KARA.NET;
 public class DatabaseSettings
 {
     public string Name { get; set; }

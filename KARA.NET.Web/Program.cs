@@ -1,15 +1,8 @@
 using KARA.NET;
-using KARA.NET.Data.EntityFramework;
 using KARA.NET.Web;
 using KARA.NET.Web.Pages;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components.Authorization;
-
-// assemblies
-var assemblies = App.AddAssembliesFromExecutionPath();
-
-// translator
-Translator.SetResource(nameof(Translation));
 
 // builder
 var builder = WebApplication.CreateBuilder(args);
@@ -20,8 +13,11 @@ builder.Services.AddRazorComponents()
 builder.Configuration.AddJsonFile($"appsettings.{Environment.MachineName}.json", optional: true, reloadOnChange: true);
 builder.Services.Configure<List<DatabaseSettings>>(builder.Configuration.GetSection(nameof(DatabaseSettings)));
 
-// logging
-builder.Services.AddLogging(x => x.AddConsole());
+// misc
+var assemblies = App.AddAssembliesFromExecutionPath();
+App.AddLogging(builder.Services, x => x.AddConsole());
+App.RegisterServices(builder.Services);
+App.SetTranslation<Translation>();
 
 // authorization
 builder.Services.AddCascadingAuthenticationState();
@@ -36,12 +32,6 @@ builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStat
 foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IAuthorizationService>(App.Assemblies))
 {
     builder.Services.AddScoped(typeof(IAuthorizationService), type);
-}
-
-// services
-foreach (var serviceManager in ReflectionUtils.CreateInstancesOfInterface<IServiceManager>(App.Assemblies))
-{
-    serviceManager.Register(builder.Services);
 }
 
 // app

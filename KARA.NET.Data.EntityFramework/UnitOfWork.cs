@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using KARA.NET.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace KARA.NET.Data.EntityFramework;
 public class UnitOfWork
     : IUnitOfWork
 {
-    internal DbContext DbContext { get; }
+    private DbContext DbContext { get; }
     private IDbContextTransaction Transaction { get; }
     public bool IsComplete { get; private set; }
 
@@ -28,6 +29,12 @@ public class UnitOfWork
         }
         this.Transaction.Dispose();
         this.DbContext.Dispose();
+    }
+
+    public IQueryable<TEntity> GetQuery<TEntity>()
+        where TEntity : class, IEntity, new()
+    {
+        return this.DbContext.Set<TEntity>().AsQueryable();
     }
 
     public void Complete()

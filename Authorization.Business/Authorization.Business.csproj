@@ -6,11 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KARA.NET\KARA.NET.csproj" />
     <ProjectReference Include="..\KARA.NET.Business\KARA.NET.Business.csproj" />
     <ProjectReference Include="..\KARA.NET.Storage\KARA.NET.Storage.csproj" />
-    <ProjectReference Include="..\Authorization\Authorization.csproj" />
-    <ProjectReference Include="..\Authorization.Data.EntityFramework\Authorization.Data.EntityFramework.csproj" />
+    <ProjectReference Include="..\Authorization.Data\Authorization.Data.csproj" />
     <ProjectReference Include="..\Authorization.Entities\Authorization.Entities.csproj" />
     <ProjectReference Include="..\Authorization.Models\Authorization.Models.csproj" />
   </ItemGroup>

@@ -14,11 +14,11 @@ public class UnitOfWorkFactory
         this.DatabaseSettings = databaseSettings.Value.ToDictionary(x => x, _ => false);
     }
 
-    public IUnitOfWork Create(string database = null)
+    public IUnitOfWork Create(string connection = null)
     {
         var databaseSettings = this.DatabaseSettings
             .Select(x => x.Key)
-            .Where(x => x.Name == database)
+            .Where(x => x.Name == connection)
             .DefaultIfEmpty(this.DatabaseSettings.Select(x => x.Key).First())
             .First();
         var dataModel = new DataModel(this.LoggerFactory, databaseSettings);

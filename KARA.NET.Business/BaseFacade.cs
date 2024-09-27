@@ -4,7 +4,6 @@ using Microsoft.Extensions.Logging;
 
 namespace KARA.NET.Business;
 public abstract class BaseFacade
-    : IService
 {
     protected ILogger Logger { get; }
     protected IMapper Mapper { get; }
