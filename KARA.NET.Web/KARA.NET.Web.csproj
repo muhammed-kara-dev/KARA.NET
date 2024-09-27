@@ -10,7 +10,9 @@
     <ProjectReference Include="..\KARA.NET.Blazor.Radzen\KARA.NET.Blazor.Radzen2.csproj" />
     <ProjectReference Include="..\KARA.NET.Storage.Blazor\KARA.NET.Storage.Blazor.csproj" />
     <ProjectReference Include="..\Authorization.Blazor\Authorization.Blazor.csproj" />
+    <ProjectReference Include="..\Authorization.Data.EntityFramework\Authorization.Data.EntityFramework.csproj" />
     <ProjectReference Include="..\PasswordManager.Blazor\PasswordManager.Blazor.csproj" />
+    <ProjectReference Include="..\PasswordManager.Data.EntityFramework\PasswordManager.Data.EntityFramework.csproj" />
   </ItemGroup>
 
   <ItemGroup>
