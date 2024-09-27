@@ -1,4 +1,4 @@
-﻿using Authorization.Data.EntityFramework;
+﻿using Authorization.Data;
 using Authorization.Entities;
 using KARA.NET.Business;
 using KARA.NET.Data;

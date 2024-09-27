@@ -1,5 +1,4 @@
 using KARA.NET;
-using KARA.NET.Data.EntityFramework;
 using KARA.NET.Web;
 using KARA.NET.Web.Pages;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -14,8 +13,11 @@ builder.Services.AddRazorComponents()
 builder.Configuration.AddJsonFile($"appsettings.{Environment.MachineName}.json", optional: true, reloadOnChange: true);
 builder.Services.Configure<List<DatabaseSettings>>(builder.Configuration.GetSection(nameof(DatabaseSettings)));
 
-// logging
-builder.Services.AddLogging(x => x.AddConsole());
+// misc
+var assemblies = App.AddAssembliesFromExecutionPath();
+App.AddLogging(builder.Services, x => x.AddConsole());
+App.RegisterServices(builder.Services);
+App.SetTranslation<Translation>();
 
 // authorization
 builder.Services.AddCascadingAuthenticationState();
@@ -31,11 +33,6 @@ foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IAuthorization
 {
     builder.Services.AddScoped(typeof(IAuthorizationService), type);
 }
-
-// misc
-var assemblies = App.AddAssembliesFromExecutionPath();
-App.RegisterServices(builder.Services);
-Translator.SetResource(nameof(Translation));
 
 // app
 var app = builder.Build();

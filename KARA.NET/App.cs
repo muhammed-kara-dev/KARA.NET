@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System.Reflection;
 
 namespace KARA.NET;
@@ -44,11 +45,21 @@ public static class App
         return App.LoadAssemblies(filePaths);
     }
 
+    public static void AddLogging(IServiceCollection services, Action<ILoggingBuilder> builder)
+    {
+        services.AddLogging(builder);
+    }
+
     public static void RegisterServices(IServiceCollection services)
     {
         foreach (var serviceManager in ReflectionUtils.CreateInstancesOfInterface<IServiceManager>(App.Assemblies))
         {
             serviceManager.Register(services);
         }
+    }
+
+    public static void SetTranslation<T>()
+    {
+        Translator.SetResource(typeof(T).Name);
     }
 }

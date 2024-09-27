@@ -1,8 +1,7 @@
 ﻿using Authorization.Entities;
 using KARA.NET.Data;
-using KARA.NET.Data.EntityFramework;
 
-namespace Authorization.Data.EntityFramework;
+namespace Authorization.Data;
 public class UserRepository
     : BaseRepository<User>
 {

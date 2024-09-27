@@ -1,7 +1,7 @@
 ﻿using KARA.NET.Business;
 using KARA.NET.Data;
 using Microsoft.Extensions.Logging;
-using PasswordManager.Data.EntityFramework;
+using PasswordManager.Data;
 using PasswordManager.Entities;
 
 namespace PasswordManager.Business;

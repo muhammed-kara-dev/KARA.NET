@@ -6,12 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KARA.NET\KARA.NET.csproj" />
+    <ProjectReference Include="..\KARA.NET.Blazor\KARA.NET.Blazor.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Blazor.Bootstrap" Version="3.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.8" />
   </ItemGroup>
 
 </Project>
