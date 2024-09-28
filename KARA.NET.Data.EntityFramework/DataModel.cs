@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using KARA.NET.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace KARA.NET.Data.EntityFramework;
@@ -28,9 +29,27 @@ public class DataModel
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        foreach (var type in ReflectionUtils.GetCreatableTypesOfInterface<IEntityTypeConfiguration>(App.Assemblies))
+        foreach (var entityType in ReflectionUtils.GetCreatableTypesOfInterface<IEntity>(App.Assemblies))
         {
-            Activator.CreateInstance(type, modelBuilder);
+            var entity = modelBuilder.Entity(entityType);
+            var entityKeyType = entityType.BaseType.GetGenericArguments()[0];
+            foreach (var property in entityType.GetProperties())
+            {
+                var entityProperty = entity.Property(property.Name);
+                if (property.Name == "ID")
+                {
+                    entity.HasKey(property.Name);
+                }
+                if (property.HasAttribute<EntityRequiredAttribute>())
+                {
+                    entityProperty.IsRequired();
+                }
+                if (property.HasAttribute<EntityMaxLengthAttribute>())
+                {
+                    var attribute = property.GetAttribute<EntityMaxLengthAttribute>();
+                    entityProperty.HasMaxLength(attribute.MaxLength);
+                }
+            }
         }
         if (this.DatabaseSettings.Seed)
         {

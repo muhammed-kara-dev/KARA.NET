@@ -4,7 +4,7 @@ namespace Authorization.Entities;
 public class User
     : BaseEntity<Guid>
 {
-    public string Name { get; set; }
-    public string Email { get; set; }
-    public string Password { get; set; }
+    [EntityRequired][EntityMaxLength(20)] public string Name { get; set; }
+    [EntityRequired][EntityMaxLength(40)] public string Email { get; set; }
+    [EntityRequired][EntityMaxLength(100)] public string Password { get; set; }
 }
