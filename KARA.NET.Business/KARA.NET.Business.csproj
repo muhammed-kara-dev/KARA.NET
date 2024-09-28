@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KARA.NET.Data\KARA.NET.Data.csproj" />
+    <ProjectReference Include="..\KARA.NET.Storage\KARA.NET.Storage.csproj" />
   </ItemGroup>
 
 </Project>
