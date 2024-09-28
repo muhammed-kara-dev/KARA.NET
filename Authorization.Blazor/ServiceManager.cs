@@ -17,6 +17,10 @@ public class ServiceManager
                 x.LogoutPath = "/authorization/logout";
                 x.AccessDeniedPath = "/authorization/accessdenied";
             });
+        services.AddAuthorizationCore(x =>
+        {
+            x.AddPolicy("Admin", y => y.RequireClaim("Admin"));
+        });
         services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
     }
 }

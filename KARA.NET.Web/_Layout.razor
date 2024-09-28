@@ -1,37 +1,23 @@
 ﻿@inherits LayoutComponentBase
-<RadzenStack Orientation="Orientation.Vertical">
-    <RadzenStack Orientation="Orientation.Horizontal">
-        <RadzenStack Orientation="Orientation.Horizontal">
-            <AuthorizeView>
-                <Authorized>
-                    <RadzenLabel Text="@($"authorized as {context.User.Identity.Name}")" />
-                </Authorized>
-                <NotAuthorized>
-                    <RadzenLabel Text="not authorized" />
-                </NotAuthorized>
-            </AuthorizeView>
-            <AuthorizeView Roles="Admin">
-                <RadzenLabel Text="you are an admin" />
-            </AuthorizeView>
-        </RadzenStack>
-        <RadzenStack Orientation="Orientation.Horizontal">
-        </RadzenStack>
+<RadzenStack Orientation="Orientation.Horizontal">
+    <RadzenStack Orientation="Orientation.Vertical">
+        <RadzenLink Path="/" Text="@Translator.GetTranslation(nameof(Translation.Home))" />
+        @foreach (var navigation in ReflectionUtils.CreateInstancesOfInterface<INavigation>(App.Assemblies))
+        {
+            <RadzenLink Icon="@navigation.Icon" Path="@navigation.Path" Text="@Translator.GetTranslation(navigation.Text)" />
+        }
     </RadzenStack>
-    <RadzenStack Orientation="Orientation.Horizontal">
-        <RadzenStack Orientation="Orientation.Vertical">
-            <RadzenLink Path="/" Text="@Translator.GetTranslation(nameof(Translation.Home))" />
-            @foreach (var navigation in ReflectionUtils.CreateInstancesOfInterface<INavigation>(App.Assemblies))
-            {
-                <RadzenLink Icon="@navigation.Icon" Path="@navigation.Path" Text="@Translator.GetTranslation(navigation.Text)" />
-            }
-        </RadzenStack>
-        <RadzenStack Orientation="Orientation.Vertical">
-            @this.Body
-        </RadzenStack>
+    <RadzenStack Orientation="Orientation.Vertical">
+        @this.Body
     </RadzenStack>
-    <div id="blazor-error-ui" style="display: none;">
-        <RadzenLabel Text="@Translator.GetTranslation(nameof(Translation.UnhandledExceptionOccured))" />
-        <RadzenLink Path="" Text="@Translator.GetTranslation(nameof(Translation.Reload))" />
-        <RadzenLink Text="X" />
-    </div>
 </RadzenStack>
+<AuthorizeView>
+    <Authorized>
+        <RadzenLabel Text="@($"user: {string.Join(", ", context.User.Claims.Select(x => x.Type))}")" />
+    </Authorized>
+</AuthorizeView>
+<div id="blazor-error-ui" style="display: none;">
+    <RadzenLabel Text="@Translator.GetTranslation(nameof(Translation.UnhandledExceptionOccured))" />
+    <RadzenLink Path="" Text="@Translator.GetTranslation(nameof(Translation.Reload))" />
+    <RadzenLink Text="X" />
+</div>

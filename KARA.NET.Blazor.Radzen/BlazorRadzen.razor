@@ -1,9 +1,4 @@
-﻿@using Microsoft.AspNetCore.Components.Web
-@using Radzen
+﻿@using KARA.NET.Blazor
 @using Radzen.Blazor
-@code
-{
-    [Parameter] public IComponentRenderMode RenderMode { get; set; }
-}
-<RadzenTheme Theme="material" @rendermode="this.RenderMode" />
+<RadzenTheme Theme="material" @rendermode="AppBlazor.RenderMode" />
 <script src="_content/Radzen.Blazor/Radzen.Blazor.js?v=@(typeof(Radzen.Colors).Assembly.GetName().Version)"></script>
