@@ -10,6 +10,7 @@
     <ProjectReference Include="..\Authorization.Data\Authorization.Data.csproj" />
     <ProjectReference Include="..\Authorization.Entities\Authorization.Entities.csproj" />
     <ProjectReference Include="..\Authorization.Models\Authorization.Models.csproj" />
+    <ProjectReference Include="..\Authorization.Shared\Authorization.Shared.csproj" />
   </ItemGroup>
 
 </Project>

@@ -23,6 +23,8 @@
   <ItemGroup>
     <ProjectReference Include="..\KARA.NET.Blazor.Bootstrap\KARA.NET.Blazor.Bootstrap.csproj" />
     <ProjectReference Include="..\KARA.NET.Blazor.Radzen\KARA.NET.Blazor.Radzen2.csproj" />
+    <ProjectReference Include="..\KARA.NET.Data.EntityFramework\KARA.NET.Data.EntityFramework.csproj" />
+    <ProjectReference Include="..\KARA.NET.Storage.Blazor\KARA.NET.Storage.Blazor.csproj" />
     <ProjectReference Include="..\Authorization.Blazor\Authorization.Blazor.csproj" />
     <ProjectReference Include="..\PasswordManager.Blazor\PasswordManager.Blazor.csproj" />
   </ItemGroup>

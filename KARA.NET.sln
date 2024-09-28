@@ -35,11 +35,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PasswordManager.Blazor", "P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KARA.NET.Blazor.Bootstrap", "KARA.NET.Blazor.Bootstrap\KARA.NET.Blazor.Bootstrap.csproj", "{BBC7E666-0783-44D1-858D-FB07962C9034}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PasswordManager", "PasswordManager\PasswordManager.csproj", "{327670E0-8571-4757-80BC-255F357E6798}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PasswordManager.Shared", "PasswordManager.Shared\PasswordManager.Shared.csproj", "{327670E0-8571-4757-80BC-255F357E6798}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization.Entities", "Authorization.Entities\Authorization.Entities.csproj", "{099D3611-8746-4C52-AD51-BC7BF2C7E4BD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization", "Authorization\Authorization.csproj", "{BFE100D4-FDC5-461D-A45C-CE8D2FC941F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization.Shared", "Authorization.Shared\Authorization.Shared.csproj", "{BFE100D4-FDC5-461D-A45C-CE8D2FC941F2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization.Models", "Authorization.Models\Authorization.Models.csproj", "{D5A4010A-98FA-4B2F-AE0C-6F0A434CA1C9}"
 EndProject
@@ -59,7 +59,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization.Data", "Autho
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KARA.NET.Data.FileSystem", "KARA.NET.Data.FileSystem\KARA.NET.Data.FileSystem.csproj", "{760CF729-A946-4AF0-B848-AC14470A55EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KARA.NET.Blazor", "KARA.NET.Blazor\KARA.NET.Blazor.csproj", "{4CA19B65-D13A-4A85-8772-039D9A77CEA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KARA.NET.Blazor", "KARA.NET.Blazor\KARA.NET.Blazor.csproj", "{4CA19B65-D13A-4A85-8772-039D9A77CEA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

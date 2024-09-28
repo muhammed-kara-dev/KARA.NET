@@ -8,10 +8,8 @@
   <ItemGroup>
     <ProjectReference Include="..\KARA.NET.Blazor.Bootstrap\KARA.NET.Blazor.Bootstrap.csproj" />
     <ProjectReference Include="..\KARA.NET.Blazor.Radzen\KARA.NET.Blazor.Radzen2.csproj" />
-    <ProjectReference Include="..\KARA.NET.Storage.Blazor\KARA.NET.Storage.Blazor.csproj" />
-    <ProjectReference Include="..\Authorization\Authorization.csproj" />
     <ProjectReference Include="..\Authorization.Business\Authorization.Business.csproj" />
-    <ProjectReference Include="..\Authorization.Data.EntityFramework\Authorization.Data.EntityFramework.csproj" />
+    <ProjectReference Include="..\Authorization.Shared\Authorization.Shared.csproj" />
   </ItemGroup>
 
 </Project>
