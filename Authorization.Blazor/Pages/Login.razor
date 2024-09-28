@@ -10,6 +10,7 @@
             <RadzenLabel Text="@Translator.GetTranslation(nameof(Translation.Password))" />
             <RadzenTextBox @bind-Value="this.Password" />
         </RadzenStack>
+        <RadzenButton Icon="login" Text="@Translator.GetTranslation(nameof(Translation.Login))" Click="this.Submit" />
         <RadzenButton Icon="login" Text="@Translator.GetTranslation(nameof(Translation.Login))" Click="this.SubmitAsync" />
     </RadzenStack>
 </RadzenStack>

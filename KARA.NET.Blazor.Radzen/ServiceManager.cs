@@ -8,9 +8,5 @@ public class ServiceManager
     public void Register(IServiceCollection services)
     {
         services.AddRadzenComponents();
-        services.AddScoped<ContextMenuService>();
-        services.AddScoped<DialogService>();
-        services.AddScoped<NotificationService>();
-        services.AddScoped<TooltipService>();
     }
 }

@@ -34,12 +34,13 @@ public static class App
         return App.LoadAssemblies(filePaths);
     }
 
-    public static Assembly[] AddAssembliesFromExecutionPath()
+    public static Assembly[] AddAssembliesFromExecutionPath(params string[] fileNamesStartsWith)
     {
         var filePaths = Directory.GetFiles(ApplicationUtils.Location, "*.dll", SearchOption.TopDirectoryOnly)
             .Select(x => (path: x, fileName: Path.GetFileNameWithoutExtension(x)))
             .Where(x => !x.fileName.StartsWith("Microsoft"))
             .Where(x => !x.fileName.StartsWith("System"))
+            .Where(x => fileNamesStartsWith.Any(y => x.fileName.StartsWith(y)))
             .Select(x => x.path)
             .ToArray();
         return App.LoadAssemblies(filePaths);
