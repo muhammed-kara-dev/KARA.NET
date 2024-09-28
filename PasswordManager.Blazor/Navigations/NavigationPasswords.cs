@@ -1,4 +1,5 @@
 ﻿using KARA.NET;
+using PasswordManager.Shared;
 
 namespace PasswordManager.Blazor;
 public class NavigationPasswords

@@ -1,4 +1,4 @@
-﻿using Authorization;
+﻿using Authorization.Shared;
 using KARA.NET;
 
 namespace PasswordManager.Blazor;
