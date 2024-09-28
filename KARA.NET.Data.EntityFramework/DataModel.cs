@@ -1,5 +1,6 @@
 ﻿using KARA.NET.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.Extensions.Logging;
 
 namespace KARA.NET.Data.EntityFramework;
@@ -40,26 +41,41 @@ public class DataModel
             }
             foreach (var property in entityType.GetProperties())
             {
-                var entityProperty = entity.Property(property.Name);
-                if (property.Name == "ID")
+                if (property.HasAttribute<EntityIgnore>())
                 {
-                    entity.HasKey(property.Name);
+                    continue;
                 }
-                if (property.HasAttribute<EntityRequired>())
+                if (property.HasAttribute<EntityNavigation>())
                 {
-                    entityProperty.IsRequired();
+                    entity.Navigation(property.Name);
                 }
-                if (property.HasAttribute<EntityMaxLength>())
+                else if (property.HasAttribute<EntityProxy>())
                 {
-                    var attribute = property.GetAttribute<EntityMaxLength>();
-                    entityProperty.HasMaxLength(attribute.MaxLength);
-                }
-                if (property.GetGetMethod().IsVirtual && property.HasAttribute<EntityProxy>())
-                {
+                    if (!property.GetGetMethod().IsVirtual)
+                    {
+                        throw new Exception($"{entityType.Name}.{property.Name} is not virtual");
+                    }
                     var attribute = property.GetAttribute<EntityProxy>();
                     entity.HasOne(property.PropertyType)
                         .WithMany(attribute.Collection)
                         .HasForeignKey(attribute.Key);
+                }
+                else
+                {
+                    var entityProperty = entity.Property(property.Name);
+                    if (property.Name == nameof(BaseEntity<object>.ID))
+                    {
+                        entity.HasKey(property.Name);
+                    }
+                    if (property.HasAttribute<EntityRequired>())
+                    {
+                        entityProperty.IsRequired();
+                    }
+                    if (property.HasAttribute<EntityMaxLength>())
+                    {
+                        var attribute = property.GetAttribute<EntityMaxLength>();
+                        entityProperty.HasMaxLength(attribute.MaxLength);
+                    }
                 }
             }
         }

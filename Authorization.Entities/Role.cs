@@ -12,5 +12,6 @@ public class Role
     [EntityMaxLength(50)]
     public string Description { get; set; }
 
+    [EntityNavigation]
     public virtual ICollection<UserRole> UserRoles { get; set; }
 }

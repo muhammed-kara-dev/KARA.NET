@@ -16,5 +16,6 @@ public class User
     [EntityMaxLength(100)]
     public string Password { get; set; }
 
+    [EntityNavigation]
     public virtual ICollection<UserRole> UserRoles { get; set; }
 }

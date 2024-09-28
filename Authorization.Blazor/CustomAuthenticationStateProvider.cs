@@ -16,8 +16,10 @@ public class CustomAuthenticationStateProvider
     public override async Task<AuthenticationState> GetAuthenticationStateAsync()
     {
         var userID = await this.UserFacade.GetCurrentUserIDAsync();
+        userID = Guid.Parse("5bd5bda4-3a99-4145-884c-377dacf5f48f");
         this.UserFacade.TryGet(userID, out var userModel);
         var test = userModel.Name;
+        var roles = userModel.Roles;
 
         await Task.Delay(TimeSpan.FromSeconds(.1));
         var claims = new List<Claim>
