@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Components;
 namespace Authorization.Blazor.Pages;
 public partial class UserList
 {
-    [Inject] private UserFacade Facade { get; set; }
+    [Inject]
+    private UserFacade Facade { get; set; }
+
     private List<UserModel> Users { get; set; } = new();
 
     protected override void OnInitialized()

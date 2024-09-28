@@ -3,21 +3,20 @@ using Authorization.Models;
 using AutoMapper;
 
 namespace Authorization.Business;
-public class UserProfile
+public class RoleProfile
     : Profile
 {
-    public UserProfile()
+    public RoleProfile()
     {
-        this.CreateMap<User, UserModel>()
+        this.CreateMap<Role, RoleModel>()
             .ForMember(target => target.ID, config => config.MapFrom(source => source.ID))
             .ForMember(target => target.Name, config => config.MapFrom(source => source.Name))
-            .ForMember(target => target.Email, config => config.MapFrom(source => source.Email))
-            .ForMember(target => target.Roles, config => config.MapFrom(source => source.UserRoles.Select(x => x.Role.Name).ToList()))
+            .ForMember(target => target.Description, config => config.MapFrom(source => source.Description))
             ;
-        this.CreateMap<UserModel, User>()
+        this.CreateMap<RoleModel, Role>()
             .ForMember(target => target.ID, config => config.MapFrom(source => source.ID))
             .ForMember(target => target.Name, config => config.MapFrom(source => source.Name))
-            .ForMember(target => target.Email, config => config.MapFrom(source => source.Email))
+            .ForMember(target => target.Description, config => config.MapFrom(source => source.Description))
             .ForMember(target => target.UserRoles, config => config.Ignore())
             ;
     }

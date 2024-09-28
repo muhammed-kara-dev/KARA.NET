@@ -17,13 +17,22 @@ public class CustomAuthenticationStateProvider
     {
         var userID = await this.UserFacade.GetCurrentUserIDAsync();
         this.UserFacade.TryGet(userID, out var userModel);
+        var test = userModel.Name;
 
         await Task.Delay(TimeSpan.FromSeconds(.1));
-        var claims = new List<ClaimsIdentity>
+        var claims = new List<Claim>
         {
+            new("Moderator", "Moderator"),
         };
-        var user = new ClaimsPrincipal(claims);
-        var identity = user.Identity;
+        var identity = new ClaimsIdentity(claims);
+        var user = new ClaimsPrincipal(identity);
+
+        var userIdentity = user.Identity;
+        var userIsAdmin = user.IsInRole("Admin");
+        var userIsModerator = user.IsInRole("Moderator");
+        var userHasClaimAdmin = user.HasClaim("Admin", "Admin");
+        var userHasClaimModerator = user.HasClaim("Moderator", "Moderator");
+
         await Task.CompletedTask;
         return new AuthenticationState(user);
     }

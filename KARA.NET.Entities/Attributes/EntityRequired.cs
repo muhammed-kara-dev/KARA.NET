@@ -1,5 +1,5 @@
 ﻿namespace KARA.NET.Entities;
-public class EntityRequiredAttribute
+public class EntityRequired
     : Attribute
 {
 }

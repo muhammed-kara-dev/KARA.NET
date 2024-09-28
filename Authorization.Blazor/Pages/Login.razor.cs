@@ -3,7 +3,9 @@
 namespace Authorization.Blazor.Pages;
 public partial class Login
 {
-    [Inject] private NavigationManager NavigationManager { get; set; }
+    [Inject]
+    private NavigationManager NavigationManager { get; set; }
+
     private string Name { get; set; }
     private string Password { get; set; }
 

@@ -1,20 +1,16 @@
 ﻿using KARA.NET.Entities;
 
 namespace Authorization.Entities;
-public class User
+public class Role
     : BaseEntity<Guid>
 {
     [EntityRequired]
-    [EntityMaxLength(20)]
+    [EntityMaxLength(50)]
     public string Name { get; set; }
 
     [EntityRequired]
-    [EntityMaxLength(40)]
-    public string Email { get; set; }
-
-    [EntityRequired]
-    [EntityMaxLength(100)]
-    public string Password { get; set; }
+    [EntityMaxLength(50)]
+    public string Description { get; set; }
 
     public virtual ICollection<UserRole> UserRoles { get; set; }
 }

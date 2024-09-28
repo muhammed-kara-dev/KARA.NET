@@ -1,8 +1,7 @@
 ﻿<CascadingAuthenticationState>
-    <Router AppAssembly="AssemblyUtils.Entry">
+    <Router AppAssembly="AssemblyUtils.Entry" AdditionalAssemblies="App.Assemblies">
         <Found Context="context">
-            <RouteView RouteData="context" DefaultLayout="typeof(_Layout)" />
-            <FocusOnNavigate RouteData="context" Selector="h1" />
+            <AuthorizeRouteView RouteData="context" DefaultLayout="typeof(_Layout)" />
         </Found>
         <NotFound>
             <LayoutView Layout="typeof(_Layout)">

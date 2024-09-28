@@ -33,6 +33,11 @@ public class DataModel
         {
             var entity = modelBuilder.Entity(entityType);
             var entityKeyType = entityType.BaseType.GetGenericArguments()[0];
+            if (entityType.HasAttribute<EntityTable>())
+            {
+                var attribute = entityType.GetAttribute<EntityTable>();
+                entity.ToTable(attribute.Name);
+            }
             foreach (var property in entityType.GetProperties())
             {
                 var entityProperty = entity.Property(property.Name);
@@ -40,14 +45,21 @@ public class DataModel
                 {
                     entity.HasKey(property.Name);
                 }
-                if (property.HasAttribute<EntityRequiredAttribute>())
+                if (property.HasAttribute<EntityRequired>())
                 {
                     entityProperty.IsRequired();
                 }
-                if (property.HasAttribute<EntityMaxLengthAttribute>())
+                if (property.HasAttribute<EntityMaxLength>())
                 {
-                    var attribute = property.GetAttribute<EntityMaxLengthAttribute>();
+                    var attribute = property.GetAttribute<EntityMaxLength>();
                     entityProperty.HasMaxLength(attribute.MaxLength);
+                }
+                if (property.GetGetMethod().IsVirtual && property.HasAttribute<EntityProxy>())
+                {
+                    var attribute = property.GetAttribute<EntityProxy>();
+                    entity.HasOne(property.PropertyType)
+                        .WithMany(attribute.Collection)
+                        .HasForeignKey(attribute.Key);
                 }
             }
         }
