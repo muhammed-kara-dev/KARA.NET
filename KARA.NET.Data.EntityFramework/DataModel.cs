@@ -1,6 +1,5 @@
 ﻿using KARA.NET.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.Extensions.Logging;
 
 namespace KARA.NET.Data.EntityFramework;
@@ -32,6 +31,10 @@ public class DataModel
     {
         foreach (var entityType in ReflectionUtils.GetCreatableTypesOfInterface<IEntity>(App.Assemblies))
         {
+            if (entityType.HasAttribute<EntityIgnore>())
+            {
+                continue;
+            }
             var entity = modelBuilder.Entity(entityType);
             var entityKeyType = entityType.BaseType.GetGenericArguments()[0];
             if (entityType.HasAttribute<EntityTable>())
@@ -45,22 +48,18 @@ public class DataModel
                 {
                     continue;
                 }
-                if (property.HasAttribute<EntityNavigation>())
+                if (property.HasAttribute<EntityNavigation>() && property.GetGetMethod().IsVirtual)
                 {
                     entity.Navigation(property.Name);
                 }
-                else if (property.HasAttribute<EntityProxy>())
+                else if (property.HasAttribute<EntityProxy>() && property.GetGetMethod().IsVirtual)
                 {
-                    if (!property.GetGetMethod().IsVirtual)
-                    {
-                        throw new Exception($"{entityType.Name}.{property.Name} is not virtual");
-                    }
                     var attribute = property.GetAttribute<EntityProxy>();
                     entity.HasOne(property.PropertyType)
                         .WithMany(attribute.Collection)
                         .HasForeignKey(attribute.Key);
                 }
-                else
+                else if (!property.GetGetMethod().IsVirtual)
                 {
                     var entityProperty = entity.Property(property.Name);
                     if (property.Name == nameof(BaseEntity<object>.ID))
