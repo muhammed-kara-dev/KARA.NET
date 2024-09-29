@@ -5,6 +5,7 @@ using System.Reflection;
 namespace KARA.NET;
 public static class App
 {
+    private static List<(Type ServiceType, Type ImplementationType)> ServiceWhitelist { get; } = new();
     public static Assembly[] Assemblies { get; private set; } = AssemblyUtils.All;
     public static string CryptoKey { get; set; } = "2024-09-21";
     public static string StorageName { get; set; } = ApplicationUtils.ProjectName;
@@ -51,11 +52,22 @@ public static class App
         services.AddLogging(builder);
     }
 
+    public static void Use<TService, TImplementation>()
+    {
+        App.ServiceWhitelist.Add((typeof(TService), typeof(TImplementation)));
+    }
+
+    private static bool IsValidService(Type serviceType, Type implementationType)
+    {
+        return !App.ServiceWhitelist.Select(x => x.ServiceType).Contains(serviceType)
+            || App.ServiceWhitelist.Any(x => x.ServiceType == serviceType && x.ImplementationType == implementationType);
+    }
+
     public static void RegisterServices(IServiceCollection services)
     {
         foreach (var serviceManager in ReflectionUtils.CreateInstancesOfInterface<IServiceManager>(App.Assemblies))
         {
-            serviceManager.Register(services);
+            serviceManager.Register(services, App.IsValidService);
         }
     }
 

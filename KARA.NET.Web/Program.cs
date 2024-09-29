@@ -1,4 +1,5 @@
 using KARA.NET;
+using KARA.NET.Data.EntityFramework;
 using KARA.NET.Web;
 using KARA.NET.Web.Pages;
 
@@ -15,6 +16,7 @@ builder.Services.Configure<List<DatabaseSettings>>(builder.Configuration.GetSect
 // misc
 var assemblies = App.AddAssembliesFromExecutionPath("KARA.NET", "Authorization", "PasswordManager");
 App.AddLogging(builder.Services, x => x.AddConsole());
+App.Use<UnitOfWork, UnitOfWorkFactory>();
 App.RegisterServices(builder.Services);
 App.SetTranslation<Translation>();
 
