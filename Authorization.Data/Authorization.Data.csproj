@@ -8,7 +8,6 @@
   <ItemGroup>
     <ProjectReference Include="..\KARA.NET.Data\KARA.NET.Data.csproj" />
     <ProjectReference Include="..\Authorization.Entities\Authorization.Entities.csproj" />
-    <ProjectReference Include="..\Authorization.Shared\Authorization.Shared.csproj" />
   </ItemGroup>
 
 </Project>

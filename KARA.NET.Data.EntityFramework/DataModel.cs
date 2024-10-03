@@ -48,18 +48,21 @@ public class DataModel
                 {
                     continue;
                 }
-                if (property.HasAttribute<EntityNavigation>() && property.GetGetMethod().IsVirtual)
+                if (property.GetGetMethod().IsVirtual)
                 {
-                    entity.Navigation(property.Name);
+                    if (property.HasAttribute<EntityNavigation>())
+                    {
+                        entity.Navigation(property.Name);
+                    }
+                    if (property.HasAttribute<EntityProxy>())
+                    {
+                        var attribute = property.GetAttribute<EntityProxy>();
+                        entity.HasOne(property.PropertyType)
+                            .WithMany(attribute.Collection)
+                            .HasForeignKey(attribute.Key);
+                    }
                 }
-                else if (property.HasAttribute<EntityProxy>() && property.GetGetMethod().IsVirtual)
-                {
-                    var attribute = property.GetAttribute<EntityProxy>();
-                    entity.HasOne(property.PropertyType)
-                        .WithMany(attribute.Collection)
-                        .HasForeignKey(attribute.Key);
-                }
-                else if (!property.GetGetMethod().IsVirtual)
+                else
                 {
                     var entityProperty = entity.Property(property.Name);
                     if (property.Name == nameof(BaseEntity<object>.ID))

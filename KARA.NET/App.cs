@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
 
@@ -47,14 +49,43 @@ public static class App
         return App.LoadAssemblies(filePaths);
     }
 
-    public static void AddLogging(IServiceCollection services, Action<ILoggingBuilder> builder)
+    public static IHostApplicationBuilder LoadAdditionalAssemblies(this IHostApplicationBuilder builder, params string[] fileNamesStartsWith)
     {
-        services.AddLogging(builder);
+        App.AddAssembliesFromExecutionPath(fileNamesStartsWith);
+        return builder;
     }
 
-    public static void Use<TService, TImplementation>()
+    public static IHostApplicationBuilder AddLogging(this IHostApplicationBuilder builder, Action<ILoggingBuilder> loggingBuilder)
     {
-        App.ServiceWhitelist.Add((typeof(TService), typeof(TImplementation)));
+        builder.Services.AddLogging(loggingBuilder);
+        return builder;
+    }
+
+    public static IHostApplicationBuilder ConfigureAppsettings(this IHostApplicationBuilder builder)
+    {
+        return builder.ConfigureAppsettings(Environment.MachineName);
+    }
+
+    public static IHostApplicationBuilder ConfigureAppsettings(this IHostApplicationBuilder builder, string name)
+    {
+        builder.Configuration.AddJsonFile($"appsettings.{name}.json", optional: true, reloadOnChange: true);
+        return builder;
+    }
+
+    public static IHostApplicationBuilder ConfigureSection<T>(this IHostApplicationBuilder builder)
+        where T : class
+    {
+        var configureOptions = builder.Configuration.GetSection(typeof(T).Name);
+        builder.Services.Configure<T>(configureOptions);
+        return builder;
+    }
+
+    public static IHostApplicationBuilder ConfigureSectionCollection<T>(this IHostApplicationBuilder builder)
+        where T : class
+    {
+        var configureOptions = builder.Configuration.GetSection(typeof(T).Name);
+        builder.Services.Configure<List<T>>(configureOptions);
+        return builder;
     }
 
     private static bool IsValidService(Type serviceType, Type implementationType)
@@ -63,16 +94,24 @@ public static class App
             || App.ServiceWhitelist.Any(x => x.ServiceType == serviceType && x.ImplementationType == implementationType);
     }
 
-    public static void RegisterServices(IServiceCollection services)
+    public static IHostApplicationBuilder RegisterServices(this IHostApplicationBuilder builder)
     {
         foreach (var serviceManager in ReflectionUtils.CreateInstancesOfInterface<IServiceManager>(App.Assemblies))
         {
-            serviceManager.Register(services, App.IsValidService);
+            serviceManager.Register(builder.Services, App.IsValidService);
         }
+        return builder;
     }
 
-    public static void SetTranslation<T>()
+    public static IHostApplicationBuilder Use<TService, TImplementation>(this IHostApplicationBuilder builder)
+    {
+        App.ServiceWhitelist.Add((typeof(TService), typeof(TImplementation)));
+        return builder;
+    }
+
+    public static IHostApplicationBuilder SetTranslation<T>(this IHostApplicationBuilder builder)
     {
         Translator.SetResource(typeof(T).Name);
+        return builder;
     }
 }
