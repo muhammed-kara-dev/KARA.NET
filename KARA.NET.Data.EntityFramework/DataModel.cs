@@ -59,6 +59,7 @@ public class DataModel
                         var attribute = property.GetAttribute<EntityProxy>();
                         entity.HasOne(property.PropertyType)
                             .WithMany(attribute.Collection)
+                            .HasPrincipalKey(nameof(BaseEntity<object>.ID))
                             .HasForeignKey(attribute.Key);
                     }
                 }

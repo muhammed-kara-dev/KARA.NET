@@ -23,6 +23,13 @@ public class UserRepository
     public bool TryGet(Guid id, out User user)
     {
         user = this.Query.FirstOrDefault(x => x.ID == id);
+
+        // TODO
+        var userRoles = user.UserRoles.ToList();
+        var userRole = userRoles?.FirstOrDefault();
+        var role = userRole?.Role;
+        // TODO
+
         return user != null;
     }
 
